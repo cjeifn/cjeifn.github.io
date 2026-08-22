@@ -57,7 +57,7 @@ image: images/share.jpg
 
   include feature.html
 
-  image="images/photo.jpg"
+  image="images/research.jpg"
 
   link="research"
 
@@ -103,7 +103,7 @@ image: images/share.jpg
 
   include feature.html
 
-  image="images/photo.jpg"
+  image="images/education.jpg"
 
   link="education"
 
@@ -153,7 +153,7 @@ image: images/share.jpg
 
   include feature.html
 
-  image="images/photo.jpg"
+  image="images/development.jpg"
 
   link="development"
 
