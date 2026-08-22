@@ -1,35 +1,58 @@
 ---
 title: 구성원
 nav:
-  order: 3
-  tooltip: About our team
+  order: 2
+  tooltip: 구성원 소개
 ---
 
-# {% include icon.html icon="fa-solid fa-users" %}Team
+# {% include icon.html icon="fa-solid fa-users" %}구성원
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+청주교대 기초수리력 연구소의 연구진 및 참여 구성원을 소개합니다.
 
 {% include section.html %}
 
-{% include list.html data="members" component="portrait" filter="role == 'pi'" %}
-{% include list.html data="members" component="portrait" filter="role != 'pi'" %}
+## 연구소장
 
-{% include section.html background="images/background.jpg" dark=true %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{:.grid}
+### 송창근
+청주교육대학교 교수
 
 {% include section.html %}
 
-{% capture content %}
+## 연구원
 
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
+{:.grid}
+### 김동원
+청주교육대학교 교수
 
-{% endcapture %}
+### 박영희
+청주교육대학교 교수
 
-{% include grid.html style="square" content=content %}
+### 김남균
+청주교육대학교 교수
+
+### 나귀수
+청주교육대학교 교수
+
+{% include section.html %}
+
+## 연구원 (대학원 과정)
+
+{:.grid}
+### 방민재
+청주교육대학교 박사과정
+
+### 김수진
+청주교육대학교 박사과정
+
+### 임규남
+청주교육대학교 석사과정
+
+### 이원우
+청주교육대학교 석사과정
+
+### 이영후
+청주교육대학교 석사과정
+
+### 정윤희
+청주교육대학교 석사과정
