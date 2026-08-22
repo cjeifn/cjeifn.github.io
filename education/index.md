@@ -6,8 +6,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-graduation-cap" %}교육
 
-청주교대 기초수리력 연구소에서 운영하는 실제-기반 교사교육 및 전문성 개발 프로그램입니다.
-
 {% include section.html %}
 
 ## 전문성 개발 프로그램 소개
