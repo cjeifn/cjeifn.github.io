@@ -1,27 +1,23 @@
 ---
-title: Research
+title: 연구
 nav:
-  order: 1
-  tooltip: Published works
+  order: 4
+  tooltip: 출판 논문 및 학회 발표 이력
 ---
 
-# {% include icon.html icon="fa-solid fa-microscope" %}Research
+# {% include icon.html icon="fa-solid fa-microscope" %}연구
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-{% include section.html %}
-
-## Highlighted
-
-{% include citation.html lookup="Open collaborative writing with Manubot" style="rich" %}
+청주교대 기초수리력 연구소의 출판 논문 및 학술대회 발표 연구 성과입니다.
 
 {% include section.html %}
 
-## All
+## 논문
 
-{% include search-box.html %}
+* 송창근, 김동원 (2026). 기초수리력 지도를 위한 진단적 사고의 두 가지 유형. **수학교육학연구**, *(게재예정)*.
+* 송창근, 김동원 (2025). 실제-기반 교사교육을 통한 초등교사의 기초수리력 지도 역량 개발 사례 연구. **학교수학**, 27(3), 505-528.
 
-{% include search-info.html %}
+{% include section.html %}
 
-{% include list.html data="citations" component="citation" style="rich" %}
+## 발표
+
+* 송창근, 김래영, 김응관, 오민영 (2026. 6. 13.). 수학학습곤란 학생 지도를 위한 교사 전문성 개발 지원 방안 탐색. **대한수학교육학회 제64회 수학교육학 연구논문 발표대회**, 목원대학교, 대전, 대한민국.
