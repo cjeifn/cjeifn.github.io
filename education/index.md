@@ -1,7 +1,7 @@
 ---
 title: 교육
 nav:
-  order: 5
+  order: 4
   tooltip: 기초수리력 지도 전문성 개발 프로그램
 ---
 
