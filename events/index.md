@@ -1,8 +1,8 @@
 ---
 title: 행사
 nav:
-  order: 3
-  tooltip: 학술 세미나 및 연구소 행사
+  order: 2
+  tooltip: 학술 세미나 및 콜로퀴움
 ---
 
 # {% include icon.html icon="fa-solid fa-calendar-days" %}행사
