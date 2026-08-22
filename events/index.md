@@ -16,9 +16,11 @@ nav:
 {% capture seminar1 %}
 **Fractions in Realistic Mathematics Education**
 
-* **일시:** 2026. 11. 7. 18:00 ~ 21:00
-* **장소:** 청주교대 교육문화관 205호
-* **발표자:** 김응관, 방민재, 김수진, 임규남, 이원우, 이영후
+<div style="font-size: 0.9em; line-height: 1.6; margin: 10px 0 16px 0; color: #475569;">
+  <strong>일시 :</strong> 2026. 11. 7.(금) 18:00 ~ 21:00<br>
+  <strong>장소 :</strong> 청주교대 교육문화관 205호<br>
+  <strong>발표자 :</strong> 김응관, 방민재, 김수진, 임규남, 이원우, 이영후
+</div>
 
 {%
   include button.html
