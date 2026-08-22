@@ -1,7 +1,7 @@
 ---
 title: 구성원
 nav:
-  order: 2
+  order: 1
   tooltip: 구성원 소개
 ---
 
