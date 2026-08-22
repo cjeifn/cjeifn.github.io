@@ -1,4 +1,7 @@
 # site properties and page defaults
+url: "https://cnueifn-commits.github.io"
+baseurl: "/cnue-ifn-site"
+
 title: CNUE-IFN
 subtitle: 청주교대 기초수리력 연구소
 description: 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 수학적 능력을 갖추도록 지원하기 위해 설립된 연구 기관입니다.
