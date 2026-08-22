@@ -1,8 +1,8 @@
 ---
 title: 연구
 nav:
-  order: 4
-  tooltip: 출판 논문 및 학회 발표 이력
+  order: 3
+  tooltip: 출판 논문 및 학회 발표
 ---
 
 # {% include icon.html icon="fa-solid fa-microscope" %}연구
