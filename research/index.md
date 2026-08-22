@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-microscope" %}연구
 
-청주교대 기초수리력 연구소의 출판 논문 및 학술대회 발표 연구 성과입니다.
-
 {% include section.html %}
 
 ## 논문
