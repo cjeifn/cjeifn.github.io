@@ -1,5 +1,5 @@
 ---
-title: Team
+title: 구성원
 nav:
   order: 3
   tooltip: About our team
