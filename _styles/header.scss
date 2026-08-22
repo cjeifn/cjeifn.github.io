@@ -60,6 +60,9 @@ header a {
 
 .title {
   font-size: var(--large);
+  line-height: 1.25;
+  white-space: normal;
+  display: block;
 }
 
 .subtitle {
@@ -160,6 +163,7 @@ header[data-big] {
 
   .title {
     font-size: var(--xxl);
+    line-height: 1.3;
   }
 
   .subtitle {
