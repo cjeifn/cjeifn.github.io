@@ -10,21 +10,6 @@ layout: default
 
 ## 주요 활동
 
-{% capture text %}
-
-기초수리력 지도에 관한 세미나와 콜로퀴움을 개최합니다.
-
-{%
-  include button.html
-  link="events"
-  text="다가오는 행사 보기"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
 {%
   include feature.html
   image="images/photo.jpg"
