@@ -1,19 +1,19 @@
 # site properties and page defaults
-title: 청주교대 기초수리력 연구소
-subtitle: CNUE-IFN
-description: An easy-to-use, flexible website template for labs, with automatic citations, GitHub tag imports, pre-built components, and more.
+title: CNUE-IFN
+subtitle: 청주교대 기초수리력 연구소
+description: 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 수학적 능력을 갖추도록 지원하기 위해 설립된 연구 기관입니다.
 header: images/background.jpg
 footer: images/background.jpg
 proofer: false
 
 # site social media and other links
 links:
-  email: contact@your-lab.com
-  orcid: 0000-0001-8713-9213
-  google-scholar: ETJoidYAAAAJ
-  github: your-lab
-  twitter: YourLabHandle
-  youtube: YourLabChannel
+  email: 
+  orcid: 
+  google-scholar: 
+  github: cnueifn-commits/cnue-ifn
+  twitter: 
+  youtube: 
 
 ### jekyll settings
 
