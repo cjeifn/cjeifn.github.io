@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-calendar-days" %}행사
 
-청주교대 기초수리력 연구소에서 주최 및 주관하는 학술 행사 및 세미나 안내입니다.
-
 {% include section.html %}
 
 ## 세미나
