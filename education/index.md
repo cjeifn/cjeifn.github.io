@@ -24,7 +24,7 @@ nav:
       </p>
     </div>
     <div style="text-align: left;">
-      <a href="#" class="button" style="text-align: left;">교육과정 상세 →</a>
+      <a href="basic" class="button" style="text-align: left;">상세보기 →</a>
     </div>
   </div>
 
@@ -38,7 +38,7 @@ nav:
       </p>
     </div>
     <div style="text-align: left;">
-      <a href="#" class="button" style="text-align: left;">교육과정 상세 →</a>
+      <a href="advanced" class="button" style="text-align: left;">상세보기 →</a>
     </div>
   </div>
 
