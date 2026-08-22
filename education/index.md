@@ -2,7 +2,6 @@
 title: 교육
 nav:
   order: 4
-  tooltip: 기초수리력 지도 전문성 개발 프로그램
 ---
 
 # {% include icon.html icon="fa-solid fa-graduation-cap" %}교육
