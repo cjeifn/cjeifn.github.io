@@ -1,22 +1,22 @@
 ---
 ---
 
-# cnueifn-commits's Website
+# 청주교대 기초수리력 연구소 (CNUE-IFN)
 
-An engaging 1-3 sentence description of your lab.
+청주교육대학교 기초수리력 연구소는 모든 학생이 수학 학습과 일상생활에 필요한 기초수리력을 효과적으로 갖추도록 다각적 진단 및 맞춤형 교육 방안을 탐구하는 전문 연구 기관입니다.
 
 {% include section.html %}
 
-## Highlights
+## 주요 활동
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+기초수리력 지도에 관한 이론적·경험적 연구를 수행하며, 학교 현장의 지도 사례를 분석하여 개념, 원리 및 분석 틀을 학술적 지식으로 발전시킵니다.
 
 {%
   include button.html
   link="research"
-  text="See our publications"
+  text="연구 성과 보기"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -28,18 +28,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   include feature.html
   image="images/photo.jpg"
   link="research"
-  title="Our Research"
+  title="연구 (Research)"
   text=text
 %}
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+실제-기반 교사교육(Practice-based Teacher Education) 접근을 바탕으로 교사의 일상 수업 경험을 출발점 삼아 기초수리력 지도 전문성 개발 프로그램을 운영합니다.
 
 {%
   include button.html
-  link="projects"
-  text="Browse our projects"
+  link="education"
+  text="교육 프로그램 보기"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -50,8 +50,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 {%
   include feature.html
   image="images/photo.jpg"
-  link="projects"
-  title="Our Projects"
+  link="education"
+  title="교육 (Education)"
   flip=true
   style="bare"
   text=text
@@ -59,12 +59,35 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+학생의 이해와 사고 특성을 정밀하게 파악할 수 있는 진단 과제, 면담 문항 및 현장 적용 중심의 맞춤형 지도 자료와 연수 자료를 체계적으로 개발합니다.
+
+{%
+  include button.html
+  link="development"
+  text="개발 자료 보기"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/photo.jpg"
+  link="development"
+  title="개발 (Development)"
+  text=text
+%}
+
+{% capture text %}
+
+기초수리력 지도 전문성 함양과 교육 혁신을 위해 함께 연구를 이끌어가는 연구진 및 대학원 연구원을 소개합니다.
 
 {%
   include button.html
   link="team"
-  text="Meet our team"
+  text="구성원 소개 보기"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -76,6 +99,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   include feature.html
   image="images/photo.jpg"
   link="team"
-  title="Our Team"
+  title="구성원 (Team)"
+  flip=true
+  style="bare"
   text=text
 %}
