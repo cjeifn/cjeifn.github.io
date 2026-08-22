@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-users" %}구성원
 
-청주교대 기초수리력 연구소의 연구진 및 참여 구성원을 소개합니다.
-
 {% include section.html %}
 
 ## 연구소장
