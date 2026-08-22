@@ -12,6 +12,31 @@ layout: default
 
 {% capture text %}
 
+기초수리력 지도에 관한 세미나와 콜로퀴움을 개최합니다.
+
+{%
+  include button.html
+  link="evnets"
+  text="다가오는 행사 보기"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/photo.jpg"
+  link="events"
+  title="행사"
+  text=text
+%}
+
+{% capture text %}
+
+{% capture text %}
+
 기초수리력 지도에 관한 이론적·경험적 연구를 수행하며, 학교 현장의 지도 사례를 분석하여 개념, 원리 및 분석 틀을 학술적 지식으로 발전시킵니다.
 
 {%
@@ -29,7 +54,7 @@ layout: default
   include feature.html
   image="images/photo.jpg"
   link="research"
-  title="연구 (Research)"
+  title="연구"
   text=text
 %}
 
@@ -40,7 +65,7 @@ layout: default
 {%
   include button.html
   link="education"
-  text="교육 프로그램 보기"
+  text="전문성 개발 프로그램 보기"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -52,7 +77,7 @@ layout: default
   include feature.html
   image="images/photo.jpg"
   link="education"
-  title="교육 (Education)"
+  title="교육"
   flip=true
   style="bare"
   text=text
@@ -77,31 +102,6 @@ layout: default
   include feature.html
   image="images/photo.jpg"
   link="development"
-  title="개발 (Development)"
-  text=text
-%}
-
-{% capture text %}
-
-기초수리력 지도 전문성 함양과 교육 혁신을 위해 함께 연구를 이끌어가는 연구진 및 대학원 연구원을 소개합니다.
-
-{%
-  include button.html
-  link="team"
-  text="구성원 소개 보기"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="team"
-  title="구성원 (Team)"
-  flip=true
-  style="bare"
+  title="개발"
   text=text
 %}
