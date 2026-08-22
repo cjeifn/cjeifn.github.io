@@ -16,7 +16,7 @@ layout: default
 
 {%
   include button.html
-  link="evnets"
+  link="events"
   text="다가오는 행사 보기"
   icon="fa-solid fa-arrow-right"
   flip=true
@@ -53,6 +53,8 @@ layout: default
   image="images/photo.jpg"
   link="research"
   title="연구"
+  flip=true
+  style="bare"
   text=text
 %}
 
@@ -76,8 +78,6 @@ layout: default
   image="images/photo.jpg"
   link="education"
   title="교육"
-  flip=true
-  style="bare"
   text=text
 %}
 
@@ -101,5 +101,7 @@ layout: default
   image="images/photo.jpg"
   link="development"
   title="개발"
+  flip=true
+  style="bare"
   text=text
 %}
