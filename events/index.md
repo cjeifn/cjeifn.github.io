@@ -13,12 +13,33 @@ nav:
 
 ## 세미나
 
-{:.grid}
-### 제1회 기초수리력 세미나
+{% capture seminar1 %}
 **Fractions in Realistic Mathematics Education**
 
-* **일시**: 2026. 11. 7. 18:00 ~ 21:00
-* **장소**: 청주교대 교육문화관 205호
-* **발표자**: 김응관, 방민재, 김수진, 임규남, 이원우, 이영후
+* **일시:** 2026. 11. 7. 18:00 ~ 21:00
+* **장소:** 청주교대 교육문화관 205호
+* **발표자:** 김응관, 방민재, 김수진, 임규남, 이원우, 이영후
 
-[세미나 상세 보기 →](https://sites.google.com/view/cnue-ifn/%ED%96%89%EC%82%AC/seminar-01?authuser=4){: .button}
+{%
+  include button.html
+  link="/events/seminar-01/"
+  text="상세 보기"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+{% endcapture %}
+
+{%
+  include feature.html
+  title="제1회 기초수리력 세미나"
+  text=seminar1
+  link="/events/seminar-01/"
+  style="card"
+%}
+
+{% include section.html %}
+
+## 콜로퀴움
+
+* 준비중
