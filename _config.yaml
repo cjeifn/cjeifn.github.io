@@ -1,144 +1,74 @@
 # site properties and page defaults
-
 title: 청주교대 기초수리력 연구소
-
-
 description: An easy-to-use, flexible website template for labs, with automatic citations, GitHub tag imports, pre-built components, and more.
-
 header: images/background.jpg
-
 footer: images/background.jpg
-
 proofer: false
-
-
+dark_mode: false
 
 # site social media and other links
-
 links:
-
   email: cnue.ifn@gmail.com
 
 ### jekyll settings
 
-
-
 # front matter defaults
-
 defaults:
-
   # all markdown files
-
   - scope:
-
       path: ""
-
     values:
-
       layout: default
-
   # markdown files in /_members
-
   - scope:
-
       type: "members"
-
     values:
-
       layout: member
-
   # markdown files in /_posts
-
   - scope:
-
       type: "posts"
-
     values:
-
       layout: post
 
-
-
 collections:
-
   # generate page for each member
-
   members:
-
     output: true
-
   # generate page for each post
-
   posts:
-
     output: true
-
-
 
 # jekyll plugins
-
 plugins:
-
   - jekyll-spaceship
-
   - jekyll-sitemap
-
   - jekyll-redirect-from
-
   - jekyll-feed
-
   - jekyll-last-modified-at
 
-
-
 # code block syntax highlighting
-
 highlighter: rouge
 
-
-
 # jekyll theme
-
 theme: null
 
-
-
 # sass settings
-
 sass:
-
   sass_dir: _styles
 
-
-
 # force jekyll to include certain files/folders
-
 include:
-
   - _styles
-
   - _scripts
 
-
-
 # force jekyll to exclude certain files/folders
-
 exclude:
-
   - README.md
-
   - LICENSE.md
-
   - CITATION.cff
 
-
-
 # configure jekyll spaceship
-
 jekyll-spaceship:
-
   mathjax-processor:
-
     src:
-
       - https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js
