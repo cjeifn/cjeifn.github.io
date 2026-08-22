@@ -2,7 +2,6 @@
 title: 구성원
 nav:
   order: 1
-  tooltip: 구성원 소개
 ---
 
 # {% include icon.html icon="fa-solid fa-users" %}구성원
