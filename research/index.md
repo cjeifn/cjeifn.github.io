@@ -1,7 +1,7 @@
 ---
 title: 연구
 nav:
-  order: 4
+  order: 5
   tooltip: 출판 논문 및 학회 발표 이력
 ---
 
