@@ -6,7 +6,7 @@ layout: default
 
 
 
-# 청주교대 기초수리력 연구소 (CNUE-IFN)
+# 청주교육대학교 기초수리력 연구소 (CNUE-IFN)
 
 
 
