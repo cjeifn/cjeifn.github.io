@@ -517,51 +517,6 @@
 <i class="icon fa-solid fa-users"></i>구성원</h1>
 
 <p>청주교대 기초수리력 연구소의 연구진 및 참여 구성원을 소개합니다.</p>
-
-<style>
-  .member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 16px;
-    width: 100%;
-    margin: 16px 0 28px 0;
-    box-sizing: border-box;
-  }
-
-  .member-card {
-    background: #ffffff;
-    border: 1px solid #eef2f6;
-    border-radius: 12px;
-    padding: 18px 16px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-  }
-
-  .member-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-color: #cbd5e1;
-  }
-
-  .member-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 6px;
-  }
-
-  .member-role {
-    font-size: 13px;
-    color: #64748b;
-    line-height: 1.4;
-  }
-</style>
   </section>
 
   
@@ -577,12 +532,12 @@
 
 <h2 id="연구소장">연구소장</h2>
 
-<div class="member-grid">
-  <div class="member-card">
-    <div class="member-name">송창근</div>
-    <div class="member-role">청주교육대학교 교수</div>
-  </div>
-</div>
+<ul class="grid card">
+  <li>
+    <h3 id="송창근">송창근</h3>
+    <p>청주교육대학교 교수</p>
+  </li>
+</ul>
   </section>
 
   
@@ -598,24 +553,30 @@
 
 <h2 id="연구원">연구원</h2>
 
-<div class="member-grid">
-  <div class="member-card">
-    <div class="member-name">김동원</div>
-    <div class="member-role">청주교육대학교 교수</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">박영희</div>
-    <div class="member-role">청주교육대학교 교수</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">김남균</div>
-    <div class="member-role">청주교육대학교 교수</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">나귀수</div>
-    <div class="member-role">청주교육대학교 교수</div>
-  </div>
-</div>
+<ul class="grid card">
+  <li>
+    <h3 id="김동원">김동원</h3>
+    <p>청주교육대학교 교수</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="박영희">박영희</h3>
+    <p>청주교육대학교 교수</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="김남균">김남균</h3>
+    <p>청주교육대학교 교수</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="나귀수">나귀수</h3>
+    <p>청주교육대학교 교수</p>
+  </li>
+</ul>
   </section>
 
   
@@ -633,41 +594,51 @@
 
 <h3 id="박사과정">박사과정</h3>
 
-<div class="member-grid">
-  <div class="member-card">
-    <div class="member-name">김응관</div>
-    <div class="member-role">청주교육대학교 박사과정</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">방민재</div>
-    <div class="member-role">청주교육대학교 박사과정</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">김수진</div>
-    <div class="member-role">청주교육대학교 박사과정</div>
-  </div>
-</div>
+<ul class="grid card">
+  <li>
+    <h3 id="김응관">김응관</h3>
+    <p>청주교육대학교 박사과정</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="방민재">방민재</h3>
+    <p>청주교육대학교 박사과정</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="김수진">김수진</h3>
+    <p>청주교육대학교 박사과정</p>
+  </li>
+</ul>
 
 <h3 id="석사과정">석사과정</h3>
 
-<div class="member-grid">
-  <div class="member-card">
-    <div class="member-name">임규남</div>
-    <div class="member-role">청주교육대학교 석사과정</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">이원우</div>
-    <div class="member-role">청주교육대학교 석사과정</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">이영후</div>
-    <div class="member-role">청주교육대학교 석사과정</div>
-  </div>
-  <div class="member-card">
-    <div class="member-name">정윤희</div>
-    <div class="member-role">청주교육대학교 석사과정</div>
-  </div>
-</div>
+<ul class="grid card">
+  <li>
+    <h3 id="임규남">임규남</h3>
+    <p>청주교육대학교 석사과정</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="이원우">이원우</h3>
+    <p>청주교육대학교 석사과정</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="이영후">이영후</h3>
+    <p>청주교육대학교 석사과정</p>
+  </li>
+</ul>
+<ul class="card">
+  <li>
+    <h3 id="정윤희">정윤희</h3>
+    <p>청주교육대학교 석사과정</p>
+  </li>
+</ul>
   </section>
 
 
