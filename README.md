@@ -5,6 +5,6 @@
 
   # cnueifn-commits's Website
 
-  Visit **[cnueifn-commits.github.io/cnue-ifn-site](https://cnueifn-commits.github.io/cnue-ifn-site)** 🚀
+  Visit **[cnueifn-commits.github.io/cnueifn.github.io](https://cnueifn-commits.github.io/cnueifn.github.io)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
