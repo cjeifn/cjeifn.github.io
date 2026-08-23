@@ -1,14 +1,14 @@
 ---
 layout: default
 title: 청주교육대학교 기초수리력 연구소
-sub-title: Cheongju National University of Education Institute for Foundational Numeracy
+subtitle: Cheongju National University of Education Institute for Foundational Numeracy
 description: 청주교육대학교 기초수리력 연구소는 모든 학생이 수학 학습과 일상생활에 필요한 기초수리력을 효과적으로 갖추도록 다각적 진단 및 맞춤형 교육 방안을 탐구하는 전문 연구 기관입니다.
 image: images/share.jpg
 ---
 
 
 
-# 청주교육대학교 기초수리력 연구소
+# 환영합니다
 
 
 
