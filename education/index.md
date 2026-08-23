@@ -16,9 +16,9 @@ nav:
   <div style="background: var(--background-color, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--border-radius, 8px); padding: 24px; box-shadow: var(--box-shadow, 0 2px 8px rgba(0,0,0,0.06)); display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; text-align: left;">
     <div style="text-align: left;">
       <div style="font-size: 0.85rem; font-weight: 600; opacity: 0.7; margin-bottom: 8px; text-align: left;">기본 과정</div>
-      <div style="font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 14px; text-align: left;">사례 중심의 기초수리력 지도 방안 탐색</div>
+      <div style="font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 14px; text-align: left;">사례를 통한 기초수리력 지도의 이해</div>
       <p style="font-size: 0.95rem; line-height: 1.65; opacity: 0.85; margin: 0 0 24px 0; word-break: keep-all; text-align: left;">
-        기초 수리력 지도를 위한 이론과 기본 원리를 익히는 과정입니다. 기초수리력의 의미, 수학 학습 부진의 진단, 지도 방법과 사례, 학생의 오개념과 오류를 해석하고 지도하는 방법을 다룹니다. 교사는 이를 통해 학생의 어려움을 이해하고 기초수리력 지도를 설계하는 데 필요한 기초 지식을 갖출 수 있습니다.
+        기초 수리력 지도를 위한 기본 이론과 원리를 익히는 과정입니다. 기초수리력의 의미, 수학 학습 부진의 진단, 지도 방법과 사례, 학생의 오개념과 오류를 해석하고 지도하는 방법을 다룹니다. 교사는 이를 통해 학생의 어려움을 이해하고 기초수리력 지도를 설계하는 데 필요한 기본적인 역량을 갖출 수 있습니다.
       </p>
     </div>
     <div style="text-align: left;">
@@ -30,9 +30,9 @@ nav:
   <div style="background: var(--background-color, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--border-radius, 8px); padding: 24px; box-shadow: var(--box-shadow, 0 2px 8px rgba(0,0,0,0.06)); display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; text-align: left;">
     <div style="text-align: left;">
       <div style="font-size: 0.85rem; font-weight: 600; opacity: 0.7; margin-bottom: 8px; text-align: left;">심화 과정</div>
-      <div style="font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 14px; text-align: left;">교수단위에 기반한 기초수리력 지도의 계획, 실행, 성찰</div>
+      <div style="font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 14px; text-align: left;">교수단위에 기반한 기초수리력 지도 실습</div>
       <p style="font-size: 0.95rem; line-height: 1.65; opacity: 0.85; margin: 0 0 24px 0; word-break: keep-all; text-align: left;">
-        실제 학생 지도 사례를 중심으로 지도 역량을 기르는 실제-기반 교사교육 과정입니다. 기초수리력 지도 대상 학생을 선정한 뒤 학생의 특성과 성취기준을 바탕으로 교수단위를 설계합니다. 이후 동료 교사와 연구자의 피드백을 반영하여 수업을 수정하고 실제 수업에 적용한 뒤, 학생의 반응과 지도 결과를 성찰하며 후속 지도를 계획합니다.
+        실제 학생 지도 사례를 중심으로 지도 역량을 기르는 실제-기반 교사교육 과정입니다. 기초수리력 지도 대상 학생을 선정한 뒤 학생의 특성과 성취기준을 바탕으로 교수단위를 설계합니다. 이후 동료 교사와 연구자의 피드백을 반영하여 수업을 수정하고 실제 수업에 적용한 뒤, 학생의 반응과 지도 결과를 성찰하며 후속 지도를 계획합니다. 교사는 이를 통해 기초수리력 지도를 위한 역량을 심화시킬 수 있습니다.
       </p>
     </div>
     <div style="text-align: left;">
