@@ -6,7 +6,9 @@ title: 기본 과정
 
 {% include section.html %}
 
-![]({{ '/images/basic-course.jpg' | relative_url }})
+<div style="text-align: center;">
+  <img src="{{ '/images/basic-course.jpg' | relative_url }}" alt="" style="max-width: 100%; height: auto;">
+</div>
 
 {% include section.html %}
 
