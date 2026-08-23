@@ -8,7 +8,7 @@ nav:
 
 {% include section.html %}
 
-## 세미나
+## 다가오는 행사
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 360px)); gap: 20px; width: 100%; margin-top: 16px; text-align: left;">
   <a href="seminar-01" style="display: block; background: #ffffff; border: 1px solid #d4d4d8; border-radius: 12px; padding: 20px 22px; text-decoration: none !important; color: inherit !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: left; transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;">
@@ -24,6 +24,6 @@ nav:
 
 {% include section.html %}
 
-## 콜로퀴움
+## 지난 행사
 
 * 준비중
