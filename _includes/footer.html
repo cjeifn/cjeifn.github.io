@@ -1,35 +1,50 @@
-{% assign image = page.footer | default: site.footer %}
-{% assign dark = page.footer-dark | is_nil: site.footer-dark | is_nil: true %}
+{% assign svg = "images/logo.svg" | file_exists %}
+{% assign png = "images/logo.png" | file_exists %}
+{% assign jpg = "images/logo.jpg" | file_exists %}
+{% assign logo = svg | default: png | default: jpg | default: nil %}
 
-<footer
-  class="background"
-  style="--image: url('{{ image | relative_url | uri_escape }}')"
-  {% if dark == true or dark == false %}
-    data-dark="{{ dark }}"
-  {% endif %}
-  data-size="wide"
->
+<footer class="site-footer">
 
-  <div class="footer-links">
-    <a href="{{ '/terms/' | relative_url }}">이용약관</a>
-    <a href="{{ '/privacy/' | relative_url }}">개인정보처리방침</a>
-    <a href="{{ '/email-policy/' | relative_url }}">이메일주소무단수집거부</a>
+  <div class="footer-logo">
+    {% if logo %}
+      <a href="{{ '/' | relative_url }}">
+        {% if svg %}
+          {{ svg | file_read }}
+        {% else %}
+          <img src="{{ logo | relative_url | uri_escape }}" alt="청주교육대학교 기초수리력연구소">
+        {% endif %}
+      </a>
+    {% endif %}
   </div>
 
-  <div class="footer-info">
-    충북 청주시 서원구 청남로 2065 청주교육대학교 대학본부 411호
+  <div class="footer-content">
+
+    <div class="footer-links">
+      <a href="{{ '/terms/' | relative_url }}">이용약관</a>
+      <a href="{{ '/privacy/' | relative_url }}">개인정보처리방침</a>
+      <a href="{{ '/email-policy/' | relative_url }}">이메일주소무단수집거부</a>
+    </div>
+
+    <div class="footer-address">
+      충북 청주시 서원구 청남로 2065 청주교육대학교 대학본부 411호
+    </div>
+
+    <div class="footer-contact">
+      전화 : (043) 299-0742
+      <span class="footer-divider"></span>
+      이메일 : <a href="mailto:cnue.ifn@gmail.com">cnue.ifn@gmail.com</a>
+    </div>
+
+    <div class="footer-copyright">
+      Copyright © {{ site.time | date: "%Y" }}. CNUE Foundational Numeracy Institute. All rights reserved.
+    </div>
+
   </div>
 
-  <div class="footer-info">
-    전화 : (043) 299-0742
-  </div>
-
-  <div class="footer-info">
-    이메일 : <a href="mailto:cnue.ifn@gmail.com">cnue.ifn@gmail.com</a>
-  </div>
-
-  <div class="footer-copyright">
-    Copyright © {{ site.time | date: "%Y" }}. CNUE Foundational Numeracy Institute. All rights reserved.
+  <div class="footer-top">
+    <a href="#" aria-label="맨 위로">
+      <span></span>
+    </a>
   </div>
 
 </footer>
