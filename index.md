@@ -12,7 +12,7 @@ image: images/share.jpg
     </h1>
 
     <p style="font-size: clamp(0.95rem, 2vw, 1.15rem); line-height: 1.8; word-break: keep-all; color: #ffffff;">
-      청주교육대학교 기초수리력연구소는 학생이 수학학습에서 경험하는 어려움을 이해하고, 이를 바탕으로 적절하게 지도하는 방법을 연구합니다.
+      청주교육대학교 기초수리력연구소는 학생이 수학학습에서 경험하는 어려움을 정확히 이해하고 이를 바탕으로 지도하는 방법을 연구합니다.
     </p>
   </div>
 </div>
