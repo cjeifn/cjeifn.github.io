@@ -37,7 +37,7 @@ image: images/share.jpg
 
   link="research"
 
-  text="연구 성과 보기"
+  text="상세보기"
 
   icon="fa-solid fa-arrow-right"
 
@@ -82,7 +82,7 @@ image: images/share.jpg
 
   link="education"
 
-  text="전문성 개발 프로그램 보기"
+  text="상세보기"
 
   icon="fa-solid fa-arrow-right"
 
@@ -130,7 +130,7 @@ image: images/share.jpg
 
   link="development"
 
-  text="개발 자료 보기"
+  text="상세보기"
 
   icon="fa-solid fa-arrow-right"
 
