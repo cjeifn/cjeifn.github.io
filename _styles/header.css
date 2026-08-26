@@ -5,7 +5,6 @@ header {
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
-  box-shadow: var(--shadow);
   position: sticky !important;
   top: 0;
   z-index: 10 !important;
@@ -48,7 +47,7 @@ header a {
 
 .title {
   font-size: var(--large);
-  font-weight: var(--bold);
+  font-weight: var(--semi-bold);
   line-height: 1.25;
   white-space: normal;
   display: block;
@@ -98,7 +97,7 @@ nav {
 
 nav > a {
   padding: 5px;
-  font-weight: var(--bold);
+  font-weight: var(--semi-bold);
 }
 
 nav > a:hover {
