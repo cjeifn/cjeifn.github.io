@@ -44,13 +44,6 @@ image: images/share.jpg
 
 {% include section.html %}
 
-
-
-## 주요 활동
-{% include section.html %}
-
-
-
 ## 주요 활동
 
 
