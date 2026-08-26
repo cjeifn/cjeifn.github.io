@@ -1,5 +1,5 @@
 ---
-title: 구성원
+title: 사람들
 nav:
   order: 1
 ---
