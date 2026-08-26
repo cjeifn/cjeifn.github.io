@@ -5,15 +5,48 @@ description: 청주교육대학교 기초수리력 연구소는 모든 학생이
 image: images/share.jpg
 ---
 
-
-
 # 환영합니다
 
+{% capture text %}
+
+### **모든 학생을 위한 기초수리력 교육**
+
+청주교육대학교 기초수리력 연구소는 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 기초 수준의 수리력을 효율적으로 갖추도록 지원합니다.
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/welcome-hero.jpg"
+  text=text
+%}
 
 
-청주교육대학교 기초수리력 연구소는 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 기초 수준의 수리력을 갖추도록 지원하기 위해 설립된 연구 기관입니다. 수학학습에 어려움을 겪는 학생의 특성을 다각도로 진단하고 그 특성에 적합한 교육 방법을 연구합니다.
+### **ABOUT US**
+
+{% capture text %}
+
+**청주교육대학교 기초수리력연구소**
+
+청주교육대학교 기초수리력 연구소는 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 기초 수준의 수리력을 갖추도록 지원하기 위해 설립된 연구 기관입니다. 
+
+수학학습에 어려움을 겪는 학생의 특성을 다각도로 진단하고 그 특성에 적합한 교육 방법을 연구합니다.
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/welcome-about.jpg"
+  text=text
+  flip=true
+%}
 
 
+{% include section.html %}
+
+
+
+## 주요 활동
 {% include section.html %}
 
 
