@@ -9,7 +9,8 @@
 <header
   class="background"
   style="--image: none; --background: #4f4f50;"
-  data-dark="{{ dark }}"
+  {% if dark == true or dark == false %}
+    data-dark="{{ dark }}"
   {% endif %}
   {% if page.url == "/" %}
     data-big
