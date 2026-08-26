@@ -4,13 +4,13 @@ title: 청주교육대학교 기초수리력연구소
 description: 청주교육대학교 기초수리력연구소는 모든 학생이 수학 학습과 일상생활에 필요한 기초 수준의 수리력을 갖추도록 다각적 진단 및 맞춤형 교육 방안을 탐구하는 전문 연구 기관입니다.
 image: images/share.jpg
 ---
-<div style="background-color: #e7eeea; padding: 100px 20px; text-align: center; color: #222222;">
+<div style="background-color: #e7eeea; padding: 100px 20px; text-align: center; color: #252525;">
   <div style="max-width: 900px; margin: 0 auto;">
-    <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; color: #222222; text-align: center;">
+    <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; color: #252525; text-align: center;">
       저마다 다르게 배우는학생을 위한 수학교육
     </h1>
 
-    <p style="font-size: 1.15rem; line-height: 1.8; word-break: keep-all; color: #222222;">
+    <p style="font-size: 1.15rem; line-height: 1.8; word-break: keep-all; color: #252525;">
       청주교육대학교 기초수리력 연구소는 모든 학생이 학교에서의 수학 학습과 일상생활에 필요한 기초 수준의 수리력을 갖추도록 지원하기 위해 설립된 연구 기관입니다. 수학학습에 어려움을 겪는 학생의 특성을 다각도로 진단하고 그 특성에 적합한 교육 방법을 연구합니다.
     </p>
   </div>
