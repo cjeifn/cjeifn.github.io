@@ -4,7 +4,6 @@ title: 청주교육대학교 기초수리력연구소
 description: 학생이 수학 학습에서 경험하는 어려움을 이해하고, 이를 바탕으로 지도하는 방법을 연구합니다.
 image: images/share.jpg
 ---
----
 <div style="background-color: #4f4f50; padding: 100px 20px; text-align: center; color: #ffffff;">
   <div style="max-width: 900px; margin: 0 auto;">
     <h1 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: bold; margin-bottom: 20px; color: #ffffff; text-align: center;">
