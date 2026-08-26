@@ -1,5 +1,5 @@
 ---
-title: 사람들
+title: 사람
 nav:
   order: 1
 ---
