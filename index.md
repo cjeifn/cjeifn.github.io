@@ -8,7 +8,7 @@ image: images/share.jpg
 <div style="background-color: #4f4f50; padding: 100px 20px; text-align: center; color: #ffffff;">
   <div style="max-width: 900px; margin: 0 auto;">
     <h1 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: bold; margin-bottom: 20px; color: #ffffff; text-align: center;">
-      저마다 다른 학생, <br> 저마다 달라야 하는 수학교육
+      조금씩 다른 학생, <br> 조금씩 다른 수학교육
     </h1>
 
     <p style="font-size: clamp(0.95rem, 2vw, 1.15rem); line-height: 1.8; word-break: keep-all; color: #ffffff;">
