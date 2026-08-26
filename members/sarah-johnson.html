@@ -573,11 +573,23 @@
     </main>
     
 
+<footer class="background site-footer" data-dark="true" data-size="wide">
+  <div class="footer-information">
+    <div class="footer-address">
+      충청북도 청주시 서원구 청남로 2065, 청주교육대학교 대학본부 411호
+    </div>
 
-<footer class="background site-footer" style="--image: url('/images/background.jpg')" data-dark="true" data-size="wide">
-  <div class="footer-copyright">
-    © 2026
-    Cheongju National University of Education Institute for Foundational Numeracy. All Rights Reserved.
+    <div class="footer-contact">
+      <a href="tel:043-299-0742">Tel. 043-299-0742</a>
+      <a href="mailto:cjeifn.contact@gmail.com">
+        E-mail. cjeifn.contact@gmail.com
+      </a>
+    </div>
+
+    <div class="footer-copyright">
+      © 2026
+      Cheongju National University of Education Institute for Foundational Numeracy. All Rights Reserved.
+    </div>
   </div>
 </footer>
 
@@ -589,14 +601,52 @@
     width: 100%;
     min-height: 0 !important;
     padding: 28px 20px !important;
+    background-image: none !important;
     text-align: center;
   }
 
-  .footer-copyright {
-    margin: 0;
-    font-size: 12px;
+  .footer-information {
+    margin: 0 auto;
+    font-size: 13px;
     line-height: 1.6;
+  }
+
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 4px;
+  }
+
+  .footer-copyright {
+    margin-top: 18px;
+    font-size: 12px;
     opacity: 0.75;
+  }
+
+  .site-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 650px) {
+    .site-footer {
+      padding: 24px 20px !important;
+    }
+
+    .footer-contact {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer-copyright {
+      margin-top: 15px;
+    }
   }
 </style>
 
