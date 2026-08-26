@@ -60,6 +60,7 @@ header a {
 
 .title {
   font-size: var(--large);
+  font-weight: var(--semi-bold);
   line-height: 1.25;
   white-space: normal;
   display: block;
@@ -109,6 +110,7 @@ nav {
 
 nav > a {
   padding: 5px;
+  font-weight: var(--semi-bold);
 }
 
 nav > a:hover {
