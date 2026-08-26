@@ -545,8 +545,11 @@
       <div class="footer-contact">
         <div class="footer-title">청주교육대학교 기초수리력연구소</div>
         <div>청주교육대학교 대학본부 411호</div>
-        <div>
+
+        <div class="footer-contact-line">
           <a href="tel:043-299-0742">(043) 299-0742</a>
+
+          
         </div>
       </div>
 
@@ -556,35 +559,17 @@
     </div>
 
     <div class="footer-right">
-      <select class="footer-related" aria-label="관련 사이트" onchange="if (this.value) window.open(this.value, '_blank')">
-        <option value="">관련 사이트</option>
-        <option value="https://www.cje.ac.kr">청주교육대학교</option>
-      </select>
-
       <nav class="footer-policy" aria-label="하단 메뉴">
         <a href="/terms/">이용약관</a>
         <a href="/privacy/">개인정보처리방침</a>
         <a href="/email-policy/">이메일무단수집거부</a>
       </nav>
 
-      <div class="footer-social">
-        
-          
-          
-          
-
-
-
-  <div class="button-wrapper">
-    <a class="button" href="mailto:cnue.ifn@gmail.com" data-tooltip="Email" data-style="bare" aria-label="Email">
-      <i class="icon fa-solid fa-envelope"></i>
       
-    </a>
-  </div>
 
+      
 
-        
-      </div>
+      
     </div>
   </div>
 </footer>
@@ -598,7 +583,7 @@
 
   .site-footer > .footer-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 80px;
     width: min(calc(100% - 48px), 1380px);
     max-width: none;
@@ -625,6 +610,16 @@
     font-weight: 600;
   }
 
+  .footer-contact-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-divider {
+    opacity: 0.45;
+  }
+
   .footer-copyright {
     font-size: 12px;
     opacity: 0.75;
@@ -634,31 +629,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: center;
     gap: 22px;
-  }
-
-  .footer-related {
-    width: 100%;
-    height: 52px;
-    padding: 0 18px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: inherit;
-    background: rgba(255, 255, 255, 0.03);
-    font: inherit;
-    font-size: 15px;
-    cursor: pointer;
-  }
-
-  .footer-related option {
-    color: #222;
-    background: #fff;
   }
 
   .footer-policy {
     display: flex;
     justify-content: flex-end;
     gap: 22px;
-    width: 100%;
     white-space: nowrap;
     font-size: 13px;
   }
@@ -667,7 +645,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 9px;
-    width: 100%;
   }
 
   .footer-social a,
@@ -709,18 +686,14 @@
       align-items: flex-start;
     }
 
-    .footer-related {
-      width: 100%;
-    }
-
-    .footer-policy,
-    .footer-social {
-      justify-content: flex-start;
-    }
-
     .footer-policy {
       flex-wrap: wrap;
+      justify-content: flex-start;
       gap: 8px 18px;
+    }
+
+    .footer-social {
+      justify-content: flex-start;
     }
   }
 </style>
