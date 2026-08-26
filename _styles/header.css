@@ -48,7 +48,7 @@ header a {
 
 .title {
   font-size: var(--large);
-  font-weight: var(--semi-bold);
+  font-weight: var(--bold);
   line-height: 1.25;
   white-space: normal;
   display: block;
@@ -98,7 +98,7 @@ nav {
 
 nav > a {
   padding: 5px;
-  font-weight: var(--semi-bold);
+  font-weight: var(--bold);
 }
 
 nav > a:hover {
