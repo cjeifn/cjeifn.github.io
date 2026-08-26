@@ -609,12 +609,11 @@
     
 
 
+
 <footer class="background site-footer" style="--image: url('/images/background.jpg')" data-dark="true" data-size="wide">
   <div class="footer-inner">
     <div class="footer-brand">
-      
-        <div class="footer-name">청주교육대학교 기초수리력연구소</div>
-      
+      <img class="footer-logo" src="/images/logo.png" alt="청주교육대학교 기초수리력연구소">
     </div>
 
     <div class="footer-information">
@@ -670,15 +669,10 @@
   .footer-logo {
     display: block;
     width: 190px;
+    height: auto;
     max-height: 58px;
     object-fit: contain;
-    object-position: left center;
-  }
-
-  .footer-name {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.5;
+    object-position: left top;
   }
 
   .footer-information {
@@ -700,14 +694,19 @@
   }
 
   .footer-policy {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-self: start;
+    margin: -8px 0 0 !important;
+    padding: 0 !important;
     white-space: nowrap;
   }
 
   .footer-policy a {
-    display: block;
-    padding: 11px 16px;
+    display: flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 18px;
     font-size: 13px;
   }
 
@@ -722,13 +721,14 @@
 
   @media (max-width: 950px) {
     .site-footer > .footer-inner {
-      grid-template-columns: 180px 1fr;
+      grid-template-columns: 190px 1fr;
       gap: 24px 36px;
       width: calc(100% - 40px);
     }
 
     .footer-policy {
       grid-column: 1 / -1;
+      margin-top: 0 !important;
     }
   }
 
@@ -739,18 +739,20 @@
       padding: 26px 0;
     }
 
-    .footer-policy {
-      grid-column: auto;
-      flex-wrap: wrap;
-    }
-
-    .footer-policy a {
-      padding: 8px 14px 8px 0;
-    }
-
     .footer-contact {
       flex-direction: column;
       gap: 2px;
+    }
+
+    .footer-policy {
+      grid-column: auto;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .footer-policy a {
+      height: 36px;
+      padding: 0;
     }
   }
 </style>
