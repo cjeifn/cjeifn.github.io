@@ -7,7 +7,7 @@ image: images/share.jpg
 <div style="background-color: #4f4f50; padding: 100px 20px; text-align: center; color: #ffffff;">
   <div style="max-width: 900px; margin: 0 auto;">
     <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; color: #ffffff; text-align: center;">
-      저마다 다르게 배우는 학생을 <br> 생각하는 수학교육
+      저마다 다르게 배우는 학생들
     </h1>
 
     <p style="font-size: 1.15rem; line-height: 1.8; word-break: keep-all; color: #ffffff;">
