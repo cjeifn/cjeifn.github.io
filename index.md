@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 청주교육대학교 기초수리력연구소
-description: 학생이 수학 학습에서 경험하는 어려움을 이해하고, 이를 바탕으로 수학을 지도하는 방법을 연구합니다.
+description: 학생이 수학 학습에서 경험하는 어려움을 이해하고, 이를 바탕으로 수학학습곤란 학생을 지도하는 방법을 연구합니다.
 image: images/share.jpg
 ---
 <div style="background-color: #4f4f50; padding: 100px 20px; text-align: center; color: #ffffff;">
