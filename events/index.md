@@ -18,7 +18,7 @@ nav:
       <div style="font-size: 13px; line-height: 1.6; color: #27272a; text-align: left; margin-bottom: 18px;">
         <div style="text-align: left;"><strong>일시 :</strong> 2026.11.6.(금) 18:00 ~ 21:00</div>
         <div style="text-align: left;"><strong>장소 :</strong> 청주교대 교육문화관 204호</div>
-        <div style="text-align: left;"><strong>발표자 :</strong> 김응관, 방민재, 김수진, 안정수, 윤정희</div>
+        <div style="text-align: left;"><strong>발표자 :</strong> 송창근, 김응관, 방민재, 김수진, 안정수, 윤정희</div>
       </div>
     </div>
     <div style="text-align: center;">
