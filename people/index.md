@@ -4,7 +4,7 @@ nav:
   order: 1
 ---
 
-# {% include icon.html icon="fa-solid fa-users" %}구성원
+# {% include icon.html icon="fa-solid fa-users" %}사람
 
 {% include section.html %}
 
