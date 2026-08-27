@@ -16,7 +16,7 @@ title: 제1회 기초수리력 세미나
 
 {%
   include button.html
-  link="https://forms.gle/5JgfPSNutJyhQ2vZA"
+  link="/events/seminar-01-survey"
   text="참가 신청하기"
   icon="fa-solid fa-arrow-up-right-from-square"
   flip=true
