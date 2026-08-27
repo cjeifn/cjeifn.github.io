@@ -4,7 +4,7 @@ title: 제1회 기초수리력 세미나
 
 # 제1회 기초수리력 세미나
 
-본 세미나에서는 L. Streefland의 『Fractions in Realistic Mathematics Education』를 읽으며, 현실적 수학교육(Realistic Mathematics Education, RME) 관점에서의 분수 지도 방안을 살펴보고 논의하고자 합니다. 관심 있는 연구자와 교육 관계자 여러분의 많은 참여를 바랍니다.
+본 세미나에서는 L. Streefland이 저술한 『Fractions in Realistic Mathematics Education』를 읽으며, 현실적 수학교육(Realistic Mathematics Education, RME) 관점에서의 분수 지도 방안을 살펴보고 논의하고자 합니다. 관심 있는 연구자와 교육 관계자 여러분의 많은 참여를 바랍니다.
 
 {% include section.html %}
 
