@@ -10,7 +10,7 @@ nav:
 
 ## 논문
 
-* 송창근, 김동원 (2026). **수학교육학연구**, *(심사중)*.
+* 송창근, 김동원 (출판 예정). 기초수리력 지도를 위한 진단적 사고의 두 가지 유형, **수학교육학연구**.
 * 송창근, 김동원 (2025). 실제-기반 교사교육을 통한 초등교사의 기초수리력 지도 역량 개발 사례 연구. **학교수학**, 27(3), 505-528. <a href="https://doi.org/10.57090/sm.2025.09.27.3.505" target="_blank" rel="noopener" aria-label="DOI">{% include icon.html icon="fa-solid fa-arrow-up-right-from-square" %}</a>
 
 {% include section.html %}
