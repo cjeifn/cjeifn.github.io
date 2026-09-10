@@ -8,7 +8,7 @@ title: 제1회 기초수리력 세미나
   <img
     src="/images/seminar-01.jpg"
     alt="제1회 기초수리력 세미나"
-    style="width: 100%; max-width: 640px; height: auto; display: inline-block; border-radius: 10px;"
+    style="width: 100%; max-width: 540px; height: auto; display: inline-block; border-radius: 10px;"
   >
 </div>
 
