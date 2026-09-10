@@ -5,11 +5,11 @@ title: 제1회 기초수리력 세미나
 # 제1회 기초수리력 세미나
 
 <div style="margin: 20px 0 28px 0;">
-  <img
-    src="{{ '/assets/images/seminar-01.jpg' | relative_url }}"
-    alt="제1회 기초수리력 세미나"
-    style="width: 100%; max-width: 760px; height: auto; display: block; border-radius: 10px;"
-  >
+<img
+  src="/images/seminar-01.jpg"
+  alt="제1회 기초수리력 세미나"
+  style="width: 100%; max-width: 760px; height: auto; display: block; margin: 20px 0 28px 0; border-radius: 10px;"
+>
 </div>
 
 본 세미나에서는 L. Streefland이 저술한 『Fractions in Realistic Mathematics Education』를 읽으며, 현실적 수학교육(Realistic Mathematics Education, RME) 관점에서의 분수 지도 방안을 살펴보고 논의하고자 합니다. 관심 있는 연구자와 교육 관계자 여러분의 많은 참여를 바랍니다.
