@@ -1,5 +1,5 @@
 ---
-title: 제1 기초 수리력 세미나 참석 신청
+title: 제1회 기초수리력 세미나 참석 신청
 ---
 
 <div style="width: 100%; overflow: hidden;">
