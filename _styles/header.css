@@ -104,6 +104,92 @@ nav > a:hover {
   color: var(--primary);
 }
 
+header nav .nav-dropdown {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+header nav .nav-dropdown > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 5px;
+  color: var(--text);
+  background: transparent;
+  font-weight: var(--semi-bold);
+  line-height: inherit;
+  list-style: none;
+  cursor: pointer;
+}
+
+header nav .nav-dropdown > summary::before {
+  content: none;
+}
+
+header nav .nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+header nav .nav-dropdown > summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+header nav .nav-dropdown[open] > summary::after {
+  transform: rotate(225deg) translate(-2px, -1px);
+}
+
+header nav .nav-dropdown > summary:hover,
+header nav .nav-submenu a:hover {
+  color: var(--primary);
+}
+
+header nav .nav-dropdown > summary:focus-visible,
+header nav .nav-submenu a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+header nav .nav-submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  min-width: 140px;
+  max-width: calc(100vw - 40px);
+  padding: 6px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--rounded);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+header nav .nav-submenu a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  font-weight: var(--semi-bold);
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  header nav .nav-submenu {
+    position: static;
+    margin-top: 5px;
+    box-shadow: none;
+  }
+}
 @media (max-width: 700px) {
   header:not([data-big]) {
     justify-content: flex-end;
