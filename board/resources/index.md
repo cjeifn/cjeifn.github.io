@@ -1,6 +1,9 @@
 ---
 title: 자료실
-resources: []
+resources:
+  - title: 교수단위 작성 자료
+    date: 2026-10-31
+    url: /board/resources/teaching-unit/
 ---
 
 # {% include icon.html icon="fa-solid fa-folder-open" %}자료실
