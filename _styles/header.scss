@@ -202,7 +202,11 @@ header nav .nav-submenu a {
 }
 
 @media (max-width: $collapse) {
-  header nav .nav-submenu {
+  header[data-big] nav {
+    gap: 4px;
+  }
+
+  header:not([data-big]) nav .nav-submenu {
     position: static;
     margin-top: 5px;
     box-shadow: none;
