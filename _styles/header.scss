@@ -143,25 +143,17 @@ header nav .nav-dropdown > summary {
   cursor: pointer;
 }
 
-header nav .nav-dropdown > summary::before {
+header nav .nav-dropdown > summary::before,
+header nav .nav-dropdown > summary::after {
   content: none;
+}
+
+header nav .nav-dropdown > summary::marker {
+  content: "";
 }
 
 header nav .nav-dropdown > summary::-webkit-details-marker {
   display: none;
-}
-
-header nav .nav-dropdown > summary::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translateY(-2px);
-}
-
-header nav .nav-dropdown[open] > summary::after {
-  transform: rotate(225deg) translate(-2px, -1px);
 }
 
 header nav .nav-dropdown > summary:hover,
@@ -201,11 +193,31 @@ header nav .nav-submenu a {
   text-align: center;
 }
 
+header nav .nav-dropdown[open] > .nav-submenu {
+  animation: nav-submenu-open 200ms ease-out;
+}
+
+@keyframes nav-submenu-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header nav .nav-dropdown[open] > .nav-submenu {
+    animation: none;
+  }
+}
+
 @media (max-width: $collapse) {
-  header nav .nav-submenu {
-    position: static;
-    margin-top: 5px;
-    box-shadow: none;
+  header[data-big] nav {
+    gap: 4px;
   }
 }
 
@@ -222,9 +234,30 @@ header:not([data-big]) {
     }
 
     nav {
-      align-items: flex-end;
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      z-index: 1;
+      align-items: stretch;
       flex-direction: column;
-      width: 100%;
+      width: 160px;
+      max-width: calc(100% - 40px);
+      padding: 12px;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--rounded);
+      box-sizing: border-box;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    nav > a {
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-toggle:checked + nav {
+        animation: nav-submenu-open 200ms ease-out;
+      }
     }
   }
 }
