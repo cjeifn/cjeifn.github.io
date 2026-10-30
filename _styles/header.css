@@ -106,7 +106,7 @@ nav > a:hover {
 
 header nav .nav-dropdown {
   position: relative;
-  min-width: 90px;
+  min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
@@ -157,12 +157,13 @@ header nav .nav-submenu a:focus-visible {
 header nav .nav-submenu {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
+  left: 50%;
+  right: auto;
   z-index: 1;
-  width: 100%;
+  width: max(100%, 90px);
   min-width: 0;
   max-width: calc(100vw - 40px);
+  translate: -50% 0;
   padding: 6px;
   border: 1px solid var(--light-gray);
   border-radius: var(--rounded);
