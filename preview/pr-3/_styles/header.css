@@ -1,0 +1,243 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  position: sticky !important;
+  top: 0;
+  z-index: 10 !important;
+}
+
+header a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.home {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.logo {
+  height: 40px;
+}
+
+.logo > * {
+  width: unset;
+  height: 100%;
+}
+
+.title-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+  font-family: var(--title);
+  text-align: left;
+}
+
+.title {
+  font-size: var(--large);
+  font-weight: var(--semi-bold);
+  line-height: 1.25;
+  white-space: normal;
+  display: block;
+}
+
+.subtitle {
+  opacity: 0.65;
+  font-weight: var(--thin);
+}
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  color: var(--text);
+  appearance: none;
+  transition: background var(--transition);
+}
+
+.nav-toggle:after {
+  content: "\f0c9";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--text);
+  font-size: 15px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  transform: translate(-50%, -50%);
+}
+
+.nav-toggle:checked:after {
+  content: "\f00d";
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--heading);
+  text-transform: uppercase;
+}
+
+nav > a {
+  padding: 5px;
+  font-weight: var(--semi-bold);
+}
+
+nav > a:hover {
+  color: var(--primary);
+}
+
+header nav .nav-dropdown {
+  position: relative;
+  min-width: 90px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+header nav .nav-dropdown > summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 5px;
+  color: var(--text);
+  background: transparent;
+  font-weight: var(--semi-bold);
+  line-height: inherit;
+  list-style: none;
+  cursor: pointer;
+}
+
+header nav .nav-dropdown > summary::before {
+  content: none;
+}
+
+header nav .nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+header nav .nav-dropdown > summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+header nav .nav-dropdown[open] > summary::after {
+  transform: rotate(225deg) translate(-2px, -1px);
+}
+
+header nav .nav-dropdown > summary:hover,
+header nav .nav-submenu a:hover {
+  color: var(--primary);
+}
+
+header nav .nav-dropdown > summary:focus-visible,
+header nav .nav-submenu a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+header nav .nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  max-width: calc(100vw - 40px);
+  padding: 6px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--rounded);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+header nav .nav-submenu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 4px;
+  font-weight: var(--semi-bold);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  header nav .nav-submenu {
+    position: static;
+    margin-top: 5px;
+    box-shadow: none;
+  }
+}
+@media (max-width: 700px) {
+  header:not([data-big]) {
+    justify-content: flex-end;
+  }
+  header:not([data-big]) .nav-toggle {
+    display: flex;
+  }
+  header:not([data-big]) .nav-toggle:not(:checked) + nav {
+    display: none;
+  }
+  header:not([data-big]) nav {
+    align-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+header[data-big] {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 20px;
+  top: unset;
+}
+header[data-big] .home {
+  flex-direction: column;
+  flex-grow: 0;
+}
+header[data-big] .logo {
+  height: 80px;
+  flex-shrink: 0;
+}
+header[data-big] .title-text {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+header[data-big] .title {
+  font-size: var(--xxl);
+  line-height: 1.3;
+}
+header[data-big] .subtitle {
+  font-size: var(--large);
+}
+
+/*# sourceMappingURL=header.css.map */
