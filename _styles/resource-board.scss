@@ -1,0 +1,78 @@
+---
+---
+
+.resource-board {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+// Keep scrolling on the board when table-wrap.js inserts its wrapper.
+.resource-board > div {
+  overflow-x: visible !important;
+}
+
+.resource-board .resource-board__table {
+  width: 100%;
+  min-width: 580px;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--text);
+  background: var(--background);
+  font-size: 1rem;
+  line-height: var(--compact);
+}
+
+.resource-board .resource-board__table th,
+.resource-board .resource-board__table td {
+  height: 68px;
+  padding: 14px 18px;
+  border: 1px solid var(--light-gray);
+  vertical-align: middle;
+  text-align: center;
+}
+
+.resource-board .resource-board__table th {
+  background: #ebebeb;
+  font-weight: var(--semi-bold);
+}
+
+.resource-board .resource-board__number,
+.resource-board .resource-board__views {
+  width: 80px;
+}
+
+.resource-board .resource-board__date {
+  width: 140px;
+  white-space: nowrap;
+}
+
+.resource-board .resource-board__table .resource-board__title {
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.resource-board .resource-board__table .resource-board__empty {
+  color: var(--dark-gray);
+  text-align: center;
+}
+
+.resource-board__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.resource-board:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
