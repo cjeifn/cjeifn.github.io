@@ -1,7 +1,5 @@
 ---
 title: 행사
-nav:
-  order: 2
 ---
 
 # {% include icon.html icon="fa-solid fa-calendar-days" %}행사

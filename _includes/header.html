@@ -50,12 +50,25 @@
     %}
     {% for page in pages %}
       {% if page.nav %}
-        <a
-          href="{{ page.dir | relative_url | uri_escape }}"
-          data-tooltip="{{ page.nav.tooltip | xml_escape }}"
-        >
-          {{ page.title }}
-        </a>
+        {% if page.nav.children %}
+          <details class="nav-dropdown">
+            <summary>{{ page.title }}</summary>
+            <div class="nav-submenu">
+              {% for child in page.nav.children %}
+                <a href="{{ child.url | relative_url | uri_escape }}">
+                  {{ child.title }}
+                </a>
+              {% endfor %}
+            </div>
+          </details>
+        {% else %}
+          <a
+            href="{{ page.dir | relative_url | uri_escape }}"
+            data-tooltip="{{ page.nav.tooltip | xml_escape }}"
+          >
+            {{ page.title }}
+          </a>
+        {% endif %}
       {% endif %}
     {% endfor %}
   </nav>
