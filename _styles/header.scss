@@ -234,9 +234,30 @@ header:not([data-big]) {
     }
 
     nav {
-      align-items: flex-end;
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      z-index: 1;
+      align-items: stretch;
       flex-direction: column;
-      width: 100%;
+      width: 160px;
+      max-width: calc(100% - 40px);
+      padding: 12px;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--rounded);
+      box-sizing: border-box;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    nav > a {
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-toggle:checked + nav {
+        animation: nav-submenu-open 200ms ease-out;
+      }
     }
   }
 }
