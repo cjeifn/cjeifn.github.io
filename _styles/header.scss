@@ -119,6 +119,7 @@ nav > a:hover {
 
 header nav .nav-dropdown {
   position: relative;
+  min-width: 90px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -129,6 +130,7 @@ header nav .nav-dropdown {
 
 header nav .nav-dropdown > summary {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 6px;
   margin: 0;
@@ -176,9 +178,11 @@ header nav .nav-submenu a:focus-visible {
 header nav .nav-submenu {
   position: absolute;
   top: 100%;
+  left: 0;
   right: 0;
   z-index: 1;
-  min-width: 140px;
+  width: 100%;
+  min-width: 0;
   max-width: calc(100vw - 40px);
   padding: 6px;
   border: 1px solid var(--light-gray);
@@ -190,10 +194,11 @@ header nav .nav-submenu {
 header nav .nav-submenu a {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
-  padding: 8px 12px;
+  padding: 8px 4px;
   font-weight: var(--semi-bold);
-  text-align: left;
+  text-align: center;
 }
 
 @media (max-width: $collapse) {
