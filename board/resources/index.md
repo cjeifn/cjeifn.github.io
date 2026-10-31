@@ -9,8 +9,11 @@ resources:
 
 {% assign resources = page.resources | sort: "date" | reverse %}
 
+# {% include icon.html icon="fa-solid fa-folder-open" %}자료실
+
+{% include section.html %}
+
 <div class="board-page" data-board-list data-views-endpoint="https://cjeifn-board-views.cgsongmath.chatgpt.site/api/views">
-  <div class="board-heading"><h1>자료실</h1></div>
   <div class="board-toolbar">
     <p>총 <span data-board-total>{{ resources.size }}</span>건</p>
     <form class="board-search" role="search" aria-label="자료실 검색">
