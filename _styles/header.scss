@@ -173,7 +173,7 @@ header nav .nav-submenu {
   left: 50%;
   right: auto;
   z-index: 1;
-  width: max(100%, 90px);
+  width: max(100%, 160px);
   min-width: 0;
   max-width: calc(100vw - 40px);
   translate: -50% 0;
@@ -184,6 +184,12 @@ header nav .nav-submenu {
   box-shadow: var(--shadow);
 }
 
+header:not([data-big]) nav .nav-submenu {
+  left: auto;
+  right: 0;
+  translate: none;
+}
+
 header nav .nav-submenu a {
   display: flex;
   align-items: center;
@@ -192,6 +198,7 @@ header nav .nav-submenu a {
   padding: 8px 4px;
   font-weight: var(--semi-bold);
   text-align: center;
+  white-space: nowrap;
 }
 
 header nav .nav-dropdown[open] > .nav-submenu {
@@ -219,6 +226,12 @@ header nav .nav-dropdown[open] > .nav-submenu {
 @media (max-width: $collapse) {
   header[data-big] nav {
     gap: 4px;
+  }
+
+  header nav .nav-submenu {
+    left: auto;
+    right: 0;
+    translate: none;
   }
 }
 
