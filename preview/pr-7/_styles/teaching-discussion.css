@@ -1,0 +1,841 @@
+.teaching-discussion [hidden] {
+  display: none !important;
+}
+
+.teaching-discussion .discussion-notice {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-notice p,
+.teaching-discussion .discussion-hint,
+.teaching-discussion .discussion-form-error,
+.teaching-discussion .discussion-comments-empty {
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-notice .board-button {
+  margin-top: 12px;
+}
+
+.teaching-discussion .discussion-row-author {
+  display: block;
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .resource-board__number,
+.teaching-discussion .resource-board__views,
+.teaching-discussion .board-post__meta > span,
+.teaching-discussion .discussion-comment-meta strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .board-pagination {
+  flex-wrap: wrap;
+}
+
+.teaching-discussion .board-pagination button:not([aria-current=page]) {
+  border-color: #cccccc;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-view-title {
+  margin: 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 22px;
+  font-weight: var(--semi-bold);
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-form {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 24px 0 0;
+}
+
+.teaching-discussion .discussion-form fieldset {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.teaching-discussion .discussion-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.teaching-discussion .discussion-field label {
+  font-size: 14px;
+  font-weight: var(--semi-bold);
+}
+
+.teaching-discussion .discussion-field input,
+.teaching-discussion .discussion-field select,
+.teaching-discussion .discussion-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 0;
+  color: #111111;
+  background: #ffffff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.teaching-discussion .discussion-editor-shell {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #bdbdbd;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-editor-toolbars {
+  position: relative;
+  min-width: 0;
+  border-bottom: 1px solid #cccccc;
+  background: #f5f5f5;
+}
+
+.teaching-discussion .discussion-editor-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 6px;
+  padding: 7px 10px;
+}
+
+.teaching-discussion .discussion-editor-toolbar--insert {
+  min-height: 46px;
+  border-bottom: 1px solid #dddddd;
+  background: #fafafa;
+}
+
+.teaching-discussion .discussion-editor-toolbar--format {
+  gap: 6px 0;
+  min-height: 48px;
+}
+
+.teaching-discussion .discussion-editor-action,
+.teaching-discussion .discussion-editor-tool {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  min-width: 32px;
+  margin: 0;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #333333;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.teaching-discussion .discussion-editor-action {
+  padding: 4px 8px;
+}
+
+.teaching-discussion .discussion-editor-action svg,
+.teaching-discussion .discussion-editor-tool svg {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.teaching-discussion .discussion-editor-action:hover:not(:disabled),
+.teaching-discussion .discussion-editor-tool:hover:not(:disabled) {
+  border-color: #cccccc;
+  background: #eaeaea;
+}
+
+.teaching-discussion .discussion-editor-tool[aria-pressed=true],
+.teaching-discussion .discussion-editor-tool.is-active {
+  border-color: #999999;
+  background: #dddddd;
+  color: #111111;
+}
+
+.teaching-discussion .discussion-editor-tool > span {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.teaching-discussion .discussion-editor-icon-bold {
+  font-weight: 700;
+}
+
+.teaching-discussion .discussion-editor-icon-italic {
+  font-family: Georgia, serif !important;
+  font-style: italic;
+}
+
+.teaching-discussion .discussion-editor-icon-underline {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.teaching-discussion .discussion-editor-icon-strike {
+  text-decoration: line-through;
+}
+
+.teaching-discussion .discussion-editor-tool-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  margin-right: 7px;
+  padding-right: 7px;
+  border-right: 1px solid #d5d5d5;
+}
+
+.teaching-discussion .discussion-editor-tool-group:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.teaching-discussion .discussion-editor-toolbar select {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  min-height: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 4px 6px;
+  border: 1px solid #c8c8c8;
+  border-radius: 2px;
+  background: #ffffff;
+  color: #333333;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.teaching-discussion .discussion-editor-toolbar .discussion-editor-font {
+  width: 106px;
+}
+
+.teaching-discussion .discussion-editor-toolbar .discussion-editor-size {
+  width: 54px;
+}
+
+.teaching-discussion .discussion-editor-toolbar .discussion-editor-table {
+  width: 66px;
+}
+
+.teaching-discussion .discussion-editor-toolbar .discussion-editor-color {
+  flex: 0 0 30px;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  margin: 0 2px;
+  padding: 5px;
+  border: 1px solid #c8c8c8;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.teaching-discussion .discussion-editor-link-panel {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border-top: 1px solid #cccccc;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-editor-link-panel input {
+  flex: 1 1 240px;
+  width: auto;
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.teaching-discussion .discussion-editor-link-panel button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid #aaaaaa;
+  border-radius: 0;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.teaching-discussion .discussion-editor-link-panel button:hover:not(:disabled) {
+  background: #f3f3f3;
+}
+
+.teaching-discussion .discussion-rich-editor {
+  width: 100%;
+  min-width: 0;
+  min-height: 500px;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap {
+  width: 100%;
+  min-width: 0;
+  min-height: 500px;
+  padding: 20px;
+  outline: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-editor-shell:focus-within {
+  border-color: #999999;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap:focus-visible {
+  outline: 2px solid #333333;
+  outline-offset: -2px;
+}
+
+.teaching-discussion .discussion-rich-editor[aria-disabled=true] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap p,
+.teaching-discussion .discussion-body p {
+  min-height: 1.8em;
+  margin: 0 0 0.75em;
+  padding: 0;
+  line-height: 1.8;
+  text-align: inherit;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap > :last-child,
+.teaching-discussion .discussion-body > :last-child {
+  margin-bottom: 0;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap ul,
+.teaching-discussion .discussion-rich-editor .tiptap ol,
+.teaching-discussion .discussion-body ul,
+.teaching-discussion .discussion-body ol {
+  margin: 0.75em 0;
+  padding-left: 26px;
+  line-height: 1.8;
+  text-align: inherit;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap ul,
+.teaching-discussion .discussion-body ul {
+  list-style: disc outside;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap ol,
+.teaching-discussion .discussion-body ol {
+  list-style: decimal outside;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap li,
+.teaching-discussion .discussion-body li {
+  margin: 4px 0;
+  padding: 0;
+  line-height: 1.8;
+  text-align: inherit;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap li > p,
+.teaching-discussion .discussion-body li > p {
+  margin-bottom: 0;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap blockquote,
+.teaching-discussion .discussion-body blockquote {
+  margin: 16px 0;
+  padding: 8px 16px;
+  border-left: 3px solid #bbbbbb;
+  color: #555555;
+  background: #f7f7f7;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap .tableWrapper,
+.teaching-discussion .discussion-body .tableWrapper,
+.teaching-discussion .discussion-rich-editor .tiptap .discussion-table-wrap,
+.teaching-discussion .discussion-body .discussion-table-wrap,
+.teaching-discussion .discussion-rich-editor .tiptap .discussion-rich-table-wrap,
+.teaching-discussion .discussion-body .discussion-rich-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap table,
+.teaching-discussion .discussion-body table {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: normal;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap th,
+.teaching-discussion .discussion-rich-editor .tiptap td,
+.teaching-discussion .discussion-body th,
+.teaching-discussion .discussion-body td {
+  position: relative;
+  min-width: 48px;
+  padding: 8px 10px;
+  border: 1px solid #cccccc;
+  vertical-align: top;
+  text-align: inherit;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap th,
+.teaching-discussion .discussion-body th {
+  background: #f2f2f2;
+  font-weight: var(--semi-bold);
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap .selectedCell::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: rgba(119, 119, 119, 0.1333333333);
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap img,
+.teaching-discussion .discussion-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap a,
+.teaching-discussion .discussion-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.teaching-discussion .discussion-rich-editor .tiptap code,
+.teaching-discussion .discussion-body code {
+  color: inherit;
+  background: #f3f3f3;
+  font-size: 0.95em;
+}
+
+.teaching-discussion .discussion-inline-photo {
+  display: block;
+  max-width: 100%;
+  margin: 16px 0;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+}
+
+.teaching-discussion .discussion-inline-photo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 720px;
+  margin: 0;
+  object-fit: contain;
+}
+
+.teaching-discussion .discussion-inline-photo-remove {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.teaching-discussion .discussion-missing-photo {
+  display: block;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  color: #555555;
+  background: #f5f5f5;
+  font-size: 14px;
+  white-space: normal;
+}
+
+.teaching-discussion .discussion-attachment-actions {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.teaching-discussion .discussion-field textarea {
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion textarea:focus-visible,
+.teaching-discussion select:focus-visible {
+  outline: 2px solid #333333;
+  outline-offset: 3px;
+}
+
+.teaching-discussion .discussion-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.teaching-discussion .discussion-hint {
+  margin-bottom: 16px;
+  color: #555555;
+  font-size: 13px;
+}
+
+.teaching-discussion .discussion-field .discussion-hint {
+  margin-bottom: 0;
+}
+
+.teaching-discussion .discussion-form-error {
+  padding: 12px;
+  border: 1px solid #777777;
+  background: #f5f5f5;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion button:disabled,
+.teaching-discussion input:disabled,
+.teaching-discussion select:disabled,
+.teaching-discussion textarea:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.teaching-discussion .discussion-body {
+  padding: 24px 0;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-field input[type=file] {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.teaching-discussion .discussion-field input[type=file]::file-selector-button {
+  min-height: 32px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #999999;
+  border-radius: 0;
+  background: #f4f4f4;
+  color: #111111;
+  font: inherit;
+  cursor: pointer;
+}
+
+.teaching-discussion .discussion-editor-attachments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teaching-discussion .discussion-editor-attachment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.teaching-discussion .discussion-editor-attachment img {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-editor-attachment-info {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-attachment-size {
+  display: block;
+  margin-top: 4px;
+  color: #666666;
+  font-size: 12px;
+}
+
+.teaching-discussion .discussion-attachment-remove {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.teaching-discussion .discussion-attachment-remove input[type=checkbox] {
+  width: 18px;
+  min-height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: #333333;
+}
+
+.teaching-discussion .discussion-editor-attachment.is-removed .discussion-editor-attachment-info {
+  color: #777777;
+  text-decoration: line-through;
+}
+
+.teaching-discussion .discussion-upload-status {
+  margin: 16px 0 0;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-post-attachments .discussion-attachment-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 720px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.teaching-discussion .discussion-attachment-image-wrap {
+  padding: 16px;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-comments-section {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #dddddd;
+}
+
+.teaching-discussion .discussion-comments-heading {
+  margin: 0 0 20px;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-comments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teaching-discussion .discussion-comment {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid #dddddd;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-comment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 13px;
+}
+
+.teaching-discussion .discussion-comment-meta time {
+  color: #555555;
+}
+
+.teaching-discussion .discussion-comment-body {
+  margin: 12px 0;
+  line-height: 1.6;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-comment-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.teaching-discussion .discussion-comment-actions .board-button {
+  padding: 8px 16px;
+}
+
+.teaching-discussion .discussion-confirm {
+  width: 400px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100dvh - 40px);
+  padding: 24px;
+  border: 1px solid #999999;
+  border-radius: 0;
+  color: #111111;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+.teaching-discussion .discussion-confirm::backdrop {
+  background: rgba(0, 0, 0, 0.3333333333);
+}
+
+.teaching-discussion .discussion-confirm h2 {
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-confirm > p {
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-sr-only,
+.teaching-discussion .discussion-trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .teaching-discussion .discussion-field-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .teaching-discussion .discussion-view-title {
+    font-size: 20px;
+  }
+  .teaching-discussion .discussion-body {
+    font-size: 15px;
+  }
+  .teaching-discussion .discussion-rich-editor {
+    min-height: 340px;
+    padding: 0;
+  }
+  .teaching-discussion .discussion-rich-editor .tiptap {
+    min-height: 340px;
+    padding: 12px;
+  }
+  .teaching-discussion .discussion-editor-toolbar {
+    padding: 6px;
+  }
+  .teaching-discussion .discussion-editor-tool-group {
+    margin-right: 5px;
+    padding-right: 5px;
+  }
+  .teaching-discussion .discussion-editor-action,
+  .teaching-discussion .discussion-editor-tool {
+    min-width: 36px;
+    height: 36px;
+  }
+  .teaching-discussion .discussion-editor-toolbar select {
+    min-height: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .teaching-discussion .discussion-editor-toolbar .discussion-editor-color {
+    height: 34px;
+    min-height: 34px;
+  }
+  .teaching-discussion .discussion-editor-link-panel {
+    padding: 10px;
+  }
+  .teaching-discussion .discussion-editor-link-panel input {
+    flex-basis: 100%;
+    width: 100%;
+    font-size: 16px;
+  }
+  .teaching-discussion .discussion-attachment-actions {
+    flex-basis: 100%;
+  }
+  .teaching-discussion .discussion-confirm {
+    padding: 20px;
+  }
+  .teaching-discussion .discussion-editor-attachment {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .teaching-discussion .discussion-editor-attachment img {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+  }
+  .teaching-discussion .discussion-editor-attachment .board-button {
+    padding: 8px 12px;
+  }
+  .teaching-discussion .discussion-attachment-image-wrap {
+    padding: 12px;
+  }
+}
+
+/*# sourceMappingURL=teaching-discussion.css.map */
