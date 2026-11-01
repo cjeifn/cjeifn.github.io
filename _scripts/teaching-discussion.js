@@ -37,20 +37,7 @@
     let deleteTarget;
     let deleteReturnFocus;
     let memoryVisitId;
-    let editorSelection;
-
-    const imageMarkerPattern = /\[\[ifn-image:([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\]\]/gi;
-    const imageMarker = (id) => `[[ifn-image:${id.toLowerCase()}]]`;
-    const bodyParts = (body) => {
-      const parts = [];
-      let offset = 0;
-      for (const match of body.matchAll(imageMarkerPattern)) {
-        parts.push({ text: body.slice(offset, match.index) }, { id: match[1].toLowerCase() });
-        offset = match.index + match[0].length;
-      }
-      parts.push({ text: body.slice(offset) });
-      return parts;
-    };
+    let richEditor;
 
     const element = (tag, className, text) => {
       const node = document.createElement(tag);
@@ -170,7 +157,7 @@
       form.setAttribute("aria-busy", String(value));
       Array.from(form.elements).forEach((control) => { control.disabled = value; });
       if (form === editorForm) {
-        composer.contentEditable = String(!value);
+        richEditor?.setEditable(!value);
         composer.setAttribute("aria-disabled", String(value));
       }
     };
@@ -185,13 +172,18 @@
       if (!form.reportValidity()) return false;
       if (!data.author || !data.body || ("title" in data && !data.title)) {
         formError(form, "공백만 입력할 수 없습니다.");
-        if (form === editorForm && !data.body) composer.focus();
+        if (form === editorForm && !data.body) richEditor?.focus();
+        return false;
+      }
+      if (form === editorForm && !richEditor?.hasContent()) {
+        formError(form, "내용을 입력하거나 사진을 넣어 주세요.");
+        richEditor?.focus();
         return false;
       }
       if (form === editorForm && Array.from(data.body.normalize("NFC")).length > 20000) {
-        formError(form, "내용은 사진 위치를 포함해 20,000자까지 입력할 수 있습니다.");
-        composer.setAttribute("aria-invalid", "true");
-        composer.focus();
+        formError(form, "내용은 서식과 사진 위치를 포함해 20,000자까지 입력할 수 있습니다.");
+        composer.querySelector('[role="textbox"]')?.setAttribute("aria-invalid", "true");
+        richEditor?.focus();
         return false;
       }
       return true;
@@ -332,203 +324,59 @@
       const entry = draft.files.find((item) => item.requestId === id);
       return entry?.previewUrl ? { src: entry.previewUrl, name: entry.file.name } : null;
     };
-    const blockNode = (node) => node.nodeType === Node.ELEMENT_NODE
-      && ["DIV", "P", "FIGURE", "LI", "UL", "OL", "BLOCKQUOTE"].includes(node.tagName);
-    const serializeChildren = (parent, includeRemoved = false) => {
-      let text = "";
-      let previousBlock = false;
-      const nodes = Array.from(parent.childNodes).filter((node) => includeRemoved || node.dataset?.bodyRemoved !== "true");
-      nodes.forEach((node, index) => {
-        let part = "";
-        if (node.nodeType === Node.TEXT_NODE) part = node.nodeValue;
-        else if (node.nodeType === Node.ELEMENT_NODE) {
-          if (node.dataset.bodyImage && uuidPattern.test(node.dataset.bodyImage)) part = imageMarker(node.dataset.bodyImage);
-          else if (node.tagName === "BR") part = parent.childNodes.length === 1 ? "" : "\n";
-          else if (!["BUTTON", "IMG", "SCRIPT", "STYLE"].includes(node.tagName)) part = serializeChildren(node, includeRemoved);
-        }
-        const block = blockNode(node);
-        if (index > 0 && (block || previousBlock)) text += "\n";
-        text += part;
-        previousBlock = block;
-      });
-      return text;
-    };
     const syncBody = () => {
-      const body = serializeChildren(composer).replace(/\r\n?/g, "\n").normalize("NFC");
+      if (!richEditor) return bodyValue.value.trim();
+      const body = richEditor.getBody().normalize("NFC");
       bodyValue.value = body;
-      composer.setAttribute("aria-invalid", String(Array.from(body.trim()).length > 20000));
-      return body.trim();
+      const input = composer.querySelector('[role="textbox"]');
+      input?.setAttribute("aria-invalid", String(Array.from(body).length > 20000));
+      return body;
     };
-    const editorLine = (text = "") => {
-      const line = element("div", "discussion-editor-line");
-      if (text) line.append(document.createTextNode(text));
-      else line.append(document.createElement("br"));
-      return line;
-    };
-    const insideComposer = (node) => node && (node === composer || composer.contains(node));
-    const validEditorRange = (range) => range && insideComposer(range.startContainer) && insideComposer(range.endContainer);
-    const rememberSelection = () => {
-      const selection = window.getSelection();
-      if (selection?.rangeCount && validEditorRange(selection.getRangeAt(0))) editorSelection = selection.getRangeAt(0).cloneRange();
-    };
-    const focusRange = (range) => {
-      composer.focus();
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      editorSelection = range.cloneRange();
-    };
-    const focusLine = (node) => {
-      const range = document.createRange();
-      range.selectNodeContents(node);
-      range.collapse(true);
-      focusRange(range);
-    };
-    const currentEditorRange = () => {
-      rememberSelection();
-      const range = validEditorRange(editorSelection) ? editorSelection.cloneRange() : document.createRange();
-      if (!validEditorRange(range)) {
-        range.selectNodeContents(composer);
-        range.collapse(false);
-      }
-      // A selected image's own controls must never become an insertion target.
-      const owner = range.startContainer.nodeType === Node.ELEMENT_NODE ? range.startContainer : range.startContainer.parentElement;
-      const figure = owner?.closest("[data-body-image]");
-      if (figure && composer.contains(figure)) {
-        range.setStartAfter(figure);
-        range.collapse(true);
-      }
-      return range;
-    };
-    const editorFigure = (id) => {
-      const figure = element("figure", "discussion-inline-photo");
-      figure.dataset.bodyImage = id;
-      figure.contentEditable = "false";
-      if (editorDraft?.removals.has(id)) {
-        figure.hidden = true;
-        figure.dataset.bodyRemoved = "true";
-      }
-      const photo = editorImage(id);
-      if (photo) figure.append(makeImage(photo.src, photo.name));
-      else figure.append(element("span", "discussion-missing-photo", "사진을 불러올 수 없습니다."));
-      const remove = element("button", "board-button discussion-inline-photo-remove", "사진 제거");
-      remove.type = "button";
-      remove.setAttribute("aria-label", `${photo?.name || "사진"} 본문에서 제거`);
-      remove.addEventListener("click", () => {
-        if (editorForm.dataset.busy === "true") return;
-        let next = figure.nextElementSibling;
-        if (!next || next.dataset.bodyImage) {
-          next = editorLine();
-          figure.after(next);
-        }
-        figure.remove();
-        syncBody();
-        focusLine(next);
-      });
-      figure.append(remove);
-      return figure;
+    const editorApi = () => {
+      if (!window.IFNDiscussionEditor) throw new ApiError("편집기를 불러오지 못했습니다. 새로고침해 주세요.");
+      return window.IFNDiscussionEditor;
     };
     const renderEditorBody = (body) => {
-      const parts = bodyParts(body);
-      const fragment = document.createDocumentFragment();
-      for (const [index, part] of parts.entries()) {
-        if (part.id) fragment.append(editorFigure(part.id));
-        else {
-          let text = part.text.replace(/\r\n?/g, "\n");
-          if (parts[index - 1]?.id && text.startsWith("\n")) text = text.slice(1);
-          if (parts[index + 1]?.id && text.endsWith("\n")) text = text.slice(0, -1);
-          if (text || (!parts[index - 1]?.id && !parts[index + 1]?.id)) {
-            text.split("\n").forEach((line) => fragment.append(editorLine(line)));
-          }
-        }
-      }
-      if (!fragment.childNodes.length || fragment.lastElementChild?.dataset.bodyImage) fragment.append(editorLine());
-      composer.replaceChildren(fragment);
-      editorSelection = null;
+      richEditor?.destroy();
+      richEditor = null;
+      richEditor = editorApi().create({
+        element: composer,
+        toolbar: select("[data-discussion-rich-toolbar]"),
+        getImage: editorImage,
+        onChange: syncBody,
+      });
+      richEditor.setBody(body);
       syncBody();
     };
-    const insertEditorContent = ({ text, id }) => {
-      if (!editorDraft || editorForm.dataset.busy === "true") return;
-      const range = currentEditorRange();
-      range.deleteContents();
-      const beforeRange = document.createRange();
-      beforeRange.selectNodeContents(composer);
-      beforeRange.setEnd(range.startContainer, range.startOffset);
-      const afterRange = document.createRange();
-      afterRange.selectNodeContents(composer);
-      afterRange.setStart(range.endContainer, range.endOffset);
-      if (!id) {
-        const node = document.createTextNode(text.replace(/\r\n?/g, "\n"));
-        range.insertNode(node);
-        range.setStartAfter(node);
-        range.collapse(true);
-        focusRange(range);
-        syncBody();
-        return;
-      }
-      const before = serializeChildren(beforeRange.cloneContents(), true);
-      const after = serializeChildren(afterRange.cloneContents(), true);
-      const figureIndex = bodyParts(before).filter((part) => part.id).length;
-      renderEditorBody(`${before}\n${imageMarker(id)}\n${after}`);
-      const inserted = composer.querySelectorAll("[data-body-image]")[figureIndex];
-      let next = inserted.nextElementSibling;
-      if (!next || next.dataset.bodyImage) {
-        next = editorLine();
-        inserted.after(next);
-      }
-      focusLine(next);
+    const insertEditorContent = ({ id }) => {
+      if (!richEditor || !editorDraft || editorForm.dataset.busy === "true") return;
+      richEditor.insertImage(id);
+      syncBody();
     };
     const removeBodyImages = (id) => {
-      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
-        if (figure.dataset.bodyImage === id.toLowerCase()) figure.remove();
-      });
-      if (!composer.childNodes.length) composer.append(editorLine());
-      editorSelection = null;
+      richEditor?.removeImages(id.toLowerCase());
       syncBody();
     };
-    const markBodyImagesRemoved = (id, removed) => {
-      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
-        if (figure.dataset.bodyImage !== id.toLowerCase()) return;
-        figure.hidden = removed;
-        if (removed) figure.dataset.bodyRemoved = "true";
-        else delete figure.dataset.bodyRemoved;
-      });
-      editorSelection = null;
+    const markBodyImagesRemoved = () => {
+      richEditor?.setRemovedImages(new Set(editorDraft?.removals || []));
       syncBody();
     };
     const resolveBodyImage = (pendingId, attachment) => {
-      let changed = false;
-      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
-        if (figure.dataset.bodyImage !== pendingId) return;
-        figure.replaceWith(editorFigure(attachment.id.toLowerCase()));
-        changed = true;
-      });
-      if (changed) {
-        editorSelection = null;
-        syncBody();
-      }
+      const changed = richEditor?.replaceImage(pendingId, attachment.id.toLowerCase()) || false;
+      richEditor?.refreshImages();
+      syncBody();
       return changed;
     };
     const renderPostBody = (post) => {
       const attachments = new Map((Array.isArray(post.attachments) ? post.attachments : [])
         .filter(validAttachment).map((attachment) => [attachment.id.toLowerCase(), attachment]));
-      const usedImages = new Set();
-      const fragment = document.createDocumentFragment();
-      for (const part of bodyParts(post.body)) {
-        if (!part.id) fragment.append(document.createTextNode(part.text));
-        else {
-          const attachment = attachments.get(part.id);
+      return editorApi().renderBody(select("[data-discussion-post-body]"), post.body, {
+        getImage: (id) => {
+          const attachment = attachments.get(id);
           const src = attachment && attachmentImage(attachment);
-          if (src) {
-            const figure = element("figure", "discussion-inline-photo");
-            figure.append(makeImage(src, attachment.name));
-            fragment.append(figure);
-            usedImages.add(part.id);
-          } else fragment.append(element("span", "discussion-missing-photo", "사진을 불러올 수 없습니다."));
-        }
-      }
-      select("[data-discussion-post-body]").replaceChildren(fragment);
-      return usedImages;
+          return src ? { src, name: attachment.name } : null;
+        },
+      });
     };
     const renderPostAttachments = (post, usedImages = new Set()) => {
       const attachments = Array.isArray(post.attachments) ? post.attachments.filter(validAttachment) : [];
@@ -566,7 +414,8 @@
     const discardDraft = () => {
       if (editorDraft) editorDraft.files.forEach(releasePreview);
       editorDraft = null;
-      editorSelection = null;
+      richEditor?.destroy();
+      richEditor = null;
     };
     const uploadStatus = (message = "") => {
       const status = select("[data-discussion-upload-status]");
@@ -578,7 +427,6 @@
       const button = element("button", "board-button", "본문에 넣기");
       button.type = "button";
       button.disabled = disabled;
-      button.addEventListener("pointerdown", rememberSelection);
       button.addEventListener("click", () => insertEditorContent({ id }));
       return button;
     };
@@ -726,8 +574,13 @@
       formError(commentForm);
       busy(commentForm, false);
       if (route.mode === "write") {
-        openEditor();
-        if (focus) select("[data-discussion-editor-title]").focus();
+        try {
+          openEditor();
+          if (focus) select("[data-discussion-editor-title]").focus();
+        } catch (error) {
+          showView("");
+          notice(error.message, { back: true, error: true });
+        }
         return;
       }
       if (route.id && !uuidPattern.test(route.id)) {
@@ -840,24 +693,11 @@
       queueFiles(files, true);
     });
     const photoButton = select("[data-discussion-insert-photo]");
-    photoButton.addEventListener("pointerdown", rememberSelection);
     photoButton.addEventListener("click", () => {
-      rememberSelection();
       if (editorForm.dataset.busy !== "true") photoInput.click();
     });
-    document.addEventListener("selectionchange", rememberSelection);
-    composer.addEventListener("input", () => { syncBody(); rememberSelection(); });
-    composer.addEventListener("paste", (event) => {
-      event.preventDefault();
-      if (editorForm.dataset.busy !== "true") insertEditorContent({ text: event.clipboardData?.getData("text/plain") || "" });
-    });
-    composer.addEventListener("dragover", (event) => event.preventDefault());
-    composer.addEventListener("drop", (event) => {
-      event.preventDefault();
-      if (editorForm.dataset.busy !== "true") insertEditorContent({ text: event.dataTransfer?.getData("text/plain") || "" });
-    });
-    composer.addEventListener("beforeinput", (event) => {
-      if (["insertFromPaste", "insertFromDrop", "insertFromYank"].includes(event.inputType)) event.preventDefault();
+    select("[data-discussion-attach-file]").addEventListener("click", () => {
+      if (editorForm.dataset.busy !== "true") fileInput.click();
     });
     select("[data-discussion-write]").addEventListener("click", () => navigate({ mode: "write" }));
     select("[data-discussion-back]").addEventListener("click", () => navigate({}));
