@@ -59,8 +59,13 @@ permalink: /board/teaching-discussion/
           <input id="discussion-title" name="title" required maxlength="150">
         </div>
         <div class="discussion-field">
-          <label for="discussion-body">내용</label>
-          <textarea id="discussion-body" name="body" required maxlength="20000" rows="12"></textarea>
+          <label id="discussion-body-label">내용</label>
+          <div class="discussion-editor-toolbar">
+            <button class="board-button" type="button" data-discussion-insert-photo>사진 넣기</button>
+            <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-discussion-photo-input aria-label="본문에 넣을 사진 선택" hidden>
+          </div>
+          <div id="discussion-body" class="discussion-rich-editor" contenteditable="true" role="textbox" aria-labelledby="discussion-body-label" aria-multiline="true" aria-required="true" data-discussion-composer></div>
+          <textarea name="body" data-discussion-body-value hidden></textarea>
         </div>
         <div class="discussion-field">
           <label for="discussion-files">사진·파일 첨부</label>
