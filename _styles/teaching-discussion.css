@@ -1,0 +1,264 @@
+.teaching-discussion [hidden] {
+  display: none !important;
+}
+
+.teaching-discussion .discussion-notice {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-notice p,
+.teaching-discussion .discussion-hint,
+.teaching-discussion .discussion-form-error,
+.teaching-discussion .discussion-comments-empty {
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-notice .board-button {
+  margin-top: 12px;
+}
+
+.teaching-discussion .discussion-row-author {
+  display: block;
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .resource-board__number,
+.teaching-discussion .resource-board__views,
+.teaching-discussion .board-post__meta > span,
+.teaching-discussion .discussion-comment-meta strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .board-pagination {
+  flex-wrap: wrap;
+}
+
+.teaching-discussion .board-pagination button:not([aria-current=page]) {
+  border-color: #cccccc;
+  background: #ffffff;
+}
+
+.teaching-discussion .discussion-view-title {
+  margin: 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 22px;
+  font-weight: var(--semi-bold);
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-form {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 24px 0 0;
+}
+
+.teaching-discussion .discussion-form fieldset {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.teaching-discussion .discussion-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.teaching-discussion .discussion-field label {
+  font-size: 14px;
+  font-weight: var(--semi-bold);
+}
+
+.teaching-discussion .discussion-field input,
+.teaching-discussion .discussion-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 0;
+  color: #111111;
+  background: #ffffff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.teaching-discussion .discussion-field textarea {
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion textarea:focus-visible {
+  outline: 2px solid #333333;
+  outline-offset: 3px;
+}
+
+.teaching-discussion .discussion-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.teaching-discussion .discussion-hint {
+  margin-bottom: 16px;
+  color: #555555;
+  font-size: 13px;
+}
+
+.teaching-discussion .discussion-field .discussion-hint {
+  margin-bottom: 0;
+}
+
+.teaching-discussion .discussion-form-error {
+  padding: 12px;
+  border: 1px solid #777777;
+  background: #f5f5f5;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion button:disabled,
+.teaching-discussion input:disabled,
+.teaching-discussion textarea:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.teaching-discussion .discussion-body {
+  padding: 24px 0;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-comments-section {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #dddddd;
+}
+
+.teaching-discussion .discussion-comments-heading {
+  margin: 0 0 20px;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-comments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teaching-discussion .discussion-comment {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid #dddddd;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-comment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 13px;
+}
+
+.teaching-discussion .discussion-comment-meta time {
+  color: #555555;
+}
+
+.teaching-discussion .discussion-comment-body {
+  margin: 12px 0;
+  line-height: 1.6;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.teaching-discussion .discussion-comment-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.teaching-discussion .discussion-comment-actions .board-button {
+  padding: 8px 16px;
+}
+
+.teaching-discussion .discussion-confirm {
+  width: 400px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100dvh - 40px);
+  padding: 24px;
+  border: 1px solid #999999;
+  border-radius: 0;
+  color: #111111;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+.teaching-discussion .discussion-confirm::backdrop {
+  background: rgba(0, 0, 0, 0.3333333333);
+}
+
+.teaching-discussion .discussion-confirm h2 {
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.teaching-discussion .discussion-confirm > p {
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.teaching-discussion .discussion-sr-only,
+.teaching-discussion .discussion-trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .teaching-discussion .discussion-field-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .teaching-discussion .discussion-view-title {
+    font-size: 20px;
+  }
+  .teaching-discussion .discussion-body {
+    font-size: 15px;
+  }
+  .teaching-discussion .discussion-confirm {
+    padding: 20px;
+  }
+}
+
+/*# sourceMappingURL=teaching-discussion.css.map */
