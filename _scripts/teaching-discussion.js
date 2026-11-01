@@ -14,6 +14,9 @@
     const searchForm = select("[data-discussion-search]");
     const editorForm = select("[data-discussion-editor]");
     const fileInput = select("[data-discussion-files]");
+    const photoInput = select("[data-discussion-photo-input]");
+    const composer = select("[data-discussion-composer]");
+    const bodyValue = select("[data-discussion-body-value]");
     const savedPostLink = select("[data-discussion-saved-post]");
     const commentForm = select("[data-discussion-comment-form]");
     const deleteForm = select("[data-discussion-delete-form]");
@@ -34,6 +37,20 @@
     let deleteTarget;
     let deleteReturnFocus;
     let memoryVisitId;
+    let editorSelection;
+
+    const imageMarkerPattern = /\[\[ifn-image:([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\]\]/gi;
+    const imageMarker = (id) => `[[ifn-image:${id.toLowerCase()}]]`;
+    const bodyParts = (body) => {
+      const parts = [];
+      let offset = 0;
+      for (const match of body.matchAll(imageMarkerPattern)) {
+        parts.push({ text: body.slice(offset, match.index) }, { id: match[1].toLowerCase() });
+        offset = match.index + match[0].length;
+      }
+      parts.push({ text: body.slice(offset) });
+      return parts;
+    };
 
     const element = (tag, className, text) => {
       const node = document.createElement(tag);
@@ -152,6 +169,10 @@
       form.dataset.busy = String(value);
       form.setAttribute("aria-busy", String(value));
       Array.from(form.elements).forEach((control) => { control.disabled = value; });
+      if (form === editorForm) {
+        composer.contentEditable = String(!value);
+        composer.setAttribute("aria-disabled", String(value));
+      }
     };
     const value = (form, name) => form.elements.namedItem(name).value;
     const payload = (form, includeTitle = false) => ({
@@ -164,6 +185,13 @@
       if (!form.reportValidity()) return false;
       if (!data.author || !data.body || ("title" in data && !data.title)) {
         formError(form, "공백만 입력할 수 없습니다.");
+        if (form === editorForm && !data.body) composer.focus();
+        return false;
+      }
+      if (form === editorForm && Array.from(data.body.normalize("NFC")).length > 20000) {
+        formError(form, "내용은 사진 위치를 포함해 20,000자까지 입력할 수 있습니다.");
+        composer.setAttribute("aria-invalid", "true");
+        composer.focus();
         return false;
       }
       return true;
@@ -293,13 +321,222 @@
       image.addEventListener("error", () => { image.hidden = true; });
       return image;
     };
-    const renderPostAttachments = (post) => {
+    const editorImage = (id) => {
+      const draft = editorDraft;
+      if (!draft) return null;
+      const attachment = draft.attachments.find((item) => item.id.toLowerCase() === id);
+      if (attachment) {
+        const src = attachmentImage(attachment);
+        return src ? { src, name: attachment.name } : null;
+      }
+      const entry = draft.files.find((item) => item.requestId === id);
+      return entry?.previewUrl ? { src: entry.previewUrl, name: entry.file.name } : null;
+    };
+    const blockNode = (node) => node.nodeType === Node.ELEMENT_NODE
+      && ["DIV", "P", "FIGURE", "LI", "UL", "OL", "BLOCKQUOTE"].includes(node.tagName);
+    const serializeChildren = (parent, includeRemoved = false) => {
+      let text = "";
+      let previousBlock = false;
+      const nodes = Array.from(parent.childNodes).filter((node) => includeRemoved || node.dataset?.bodyRemoved !== "true");
+      nodes.forEach((node, index) => {
+        let part = "";
+        if (node.nodeType === Node.TEXT_NODE) part = node.nodeValue;
+        else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.dataset.bodyImage && uuidPattern.test(node.dataset.bodyImage)) part = imageMarker(node.dataset.bodyImage);
+          else if (node.tagName === "BR") part = parent.childNodes.length === 1 ? "" : "\n";
+          else if (!["BUTTON", "IMG", "SCRIPT", "STYLE"].includes(node.tagName)) part = serializeChildren(node, includeRemoved);
+        }
+        const block = blockNode(node);
+        if (index > 0 && (block || previousBlock)) text += "\n";
+        text += part;
+        previousBlock = block;
+      });
+      return text;
+    };
+    const syncBody = () => {
+      const body = serializeChildren(composer).replace(/\r\n?/g, "\n").normalize("NFC");
+      bodyValue.value = body;
+      composer.setAttribute("aria-invalid", String(Array.from(body.trim()).length > 20000));
+      return body.trim();
+    };
+    const editorLine = (text = "") => {
+      const line = element("div", "discussion-editor-line");
+      if (text) line.append(document.createTextNode(text));
+      else line.append(document.createElement("br"));
+      return line;
+    };
+    const insideComposer = (node) => node && (node === composer || composer.contains(node));
+    const validEditorRange = (range) => range && insideComposer(range.startContainer) && insideComposer(range.endContainer);
+    const rememberSelection = () => {
+      const selection = window.getSelection();
+      if (selection?.rangeCount && validEditorRange(selection.getRangeAt(0))) editorSelection = selection.getRangeAt(0).cloneRange();
+    };
+    const focusRange = (range) => {
+      composer.focus();
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      editorSelection = range.cloneRange();
+    };
+    const focusLine = (node) => {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      range.collapse(true);
+      focusRange(range);
+    };
+    const currentEditorRange = () => {
+      rememberSelection();
+      const range = validEditorRange(editorSelection) ? editorSelection.cloneRange() : document.createRange();
+      if (!validEditorRange(range)) {
+        range.selectNodeContents(composer);
+        range.collapse(false);
+      }
+      // A selected image's own controls must never become an insertion target.
+      const owner = range.startContainer.nodeType === Node.ELEMENT_NODE ? range.startContainer : range.startContainer.parentElement;
+      const figure = owner?.closest("[data-body-image]");
+      if (figure && composer.contains(figure)) {
+        range.setStartAfter(figure);
+        range.collapse(true);
+      }
+      return range;
+    };
+    const editorFigure = (id) => {
+      const figure = element("figure", "discussion-inline-photo");
+      figure.dataset.bodyImage = id;
+      figure.contentEditable = "false";
+      if (editorDraft?.removals.has(id)) {
+        figure.hidden = true;
+        figure.dataset.bodyRemoved = "true";
+      }
+      const photo = editorImage(id);
+      if (photo) figure.append(makeImage(photo.src, photo.name));
+      else figure.append(element("span", "discussion-missing-photo", "사진을 불러올 수 없습니다."));
+      const remove = element("button", "board-button discussion-inline-photo-remove", "사진 제거");
+      remove.type = "button";
+      remove.setAttribute("aria-label", `${photo?.name || "사진"} 본문에서 제거`);
+      remove.addEventListener("click", () => {
+        if (editorForm.dataset.busy === "true") return;
+        let next = figure.nextElementSibling;
+        if (!next || next.dataset.bodyImage) {
+          next = editorLine();
+          figure.after(next);
+        }
+        figure.remove();
+        syncBody();
+        focusLine(next);
+      });
+      figure.append(remove);
+      return figure;
+    };
+    const renderEditorBody = (body) => {
+      const parts = bodyParts(body);
+      const fragment = document.createDocumentFragment();
+      for (const [index, part] of parts.entries()) {
+        if (part.id) fragment.append(editorFigure(part.id));
+        else {
+          let text = part.text.replace(/\r\n?/g, "\n");
+          if (parts[index - 1]?.id && text.startsWith("\n")) text = text.slice(1);
+          if (parts[index + 1]?.id && text.endsWith("\n")) text = text.slice(0, -1);
+          if (text || (!parts[index - 1]?.id && !parts[index + 1]?.id)) {
+            text.split("\n").forEach((line) => fragment.append(editorLine(line)));
+          }
+        }
+      }
+      if (!fragment.childNodes.length || fragment.lastElementChild?.dataset.bodyImage) fragment.append(editorLine());
+      composer.replaceChildren(fragment);
+      editorSelection = null;
+      syncBody();
+    };
+    const insertEditorContent = ({ text, id }) => {
+      if (!editorDraft || editorForm.dataset.busy === "true") return;
+      const range = currentEditorRange();
+      range.deleteContents();
+      const beforeRange = document.createRange();
+      beforeRange.selectNodeContents(composer);
+      beforeRange.setEnd(range.startContainer, range.startOffset);
+      const afterRange = document.createRange();
+      afterRange.selectNodeContents(composer);
+      afterRange.setStart(range.endContainer, range.endOffset);
+      if (!id) {
+        const node = document.createTextNode(text.replace(/\r\n?/g, "\n"));
+        range.insertNode(node);
+        range.setStartAfter(node);
+        range.collapse(true);
+        focusRange(range);
+        syncBody();
+        return;
+      }
+      const before = serializeChildren(beforeRange.cloneContents(), true);
+      const after = serializeChildren(afterRange.cloneContents(), true);
+      const figureIndex = bodyParts(before).filter((part) => part.id).length;
+      renderEditorBody(`${before}\n${imageMarker(id)}\n${after}`);
+      const inserted = composer.querySelectorAll("[data-body-image]")[figureIndex];
+      let next = inserted.nextElementSibling;
+      if (!next || next.dataset.bodyImage) {
+        next = editorLine();
+        inserted.after(next);
+      }
+      focusLine(next);
+    };
+    const removeBodyImages = (id) => {
+      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
+        if (figure.dataset.bodyImage === id.toLowerCase()) figure.remove();
+      });
+      if (!composer.childNodes.length) composer.append(editorLine());
+      editorSelection = null;
+      syncBody();
+    };
+    const markBodyImagesRemoved = (id, removed) => {
+      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
+        if (figure.dataset.bodyImage !== id.toLowerCase()) return;
+        figure.hidden = removed;
+        if (removed) figure.dataset.bodyRemoved = "true";
+        else delete figure.dataset.bodyRemoved;
+      });
+      editorSelection = null;
+      syncBody();
+    };
+    const resolveBodyImage = (pendingId, attachment) => {
+      let changed = false;
+      composer.querySelectorAll("[data-body-image]").forEach((figure) => {
+        if (figure.dataset.bodyImage !== pendingId) return;
+        figure.replaceWith(editorFigure(attachment.id.toLowerCase()));
+        changed = true;
+      });
+      if (changed) {
+        editorSelection = null;
+        syncBody();
+      }
+      return changed;
+    };
+    const renderPostBody = (post) => {
+      const attachments = new Map((Array.isArray(post.attachments) ? post.attachments : [])
+        .filter(validAttachment).map((attachment) => [attachment.id.toLowerCase(), attachment]));
+      const usedImages = new Set();
+      const fragment = document.createDocumentFragment();
+      for (const part of bodyParts(post.body)) {
+        if (!part.id) fragment.append(document.createTextNode(part.text));
+        else {
+          const attachment = attachments.get(part.id);
+          const src = attachment && attachmentImage(attachment);
+          if (src) {
+            const figure = element("figure", "discussion-inline-photo");
+            figure.append(makeImage(src, attachment.name));
+            fragment.append(figure);
+            usedImages.add(part.id);
+          } else fragment.append(element("span", "discussion-missing-photo", "사진을 불러올 수 없습니다."));
+        }
+      }
+      select("[data-discussion-post-body]").replaceChildren(fragment);
+      return usedImages;
+    };
+    const renderPostAttachments = (post, usedImages = new Set()) => {
       const attachments = Array.isArray(post.attachments) ? post.attachments.filter(validAttachment) : [];
       const fragment = document.createDocumentFragment();
       for (const attachment of attachments) {
         const item = element("li");
         const src = attachmentImage(attachment);
-        if (src) {
+        if (src && !usedImages.has(attachment.id.toLowerCase())) {
           const imageWrap = element("div", "discussion-attachment-image-wrap");
           imageWrap.append(makeImage(src, attachment.name, "discussion-attachment-image"));
           item.append(imageWrap);
@@ -329,6 +566,7 @@
     const discardDraft = () => {
       if (editorDraft) editorDraft.files.forEach(releasePreview);
       editorDraft = null;
+      editorSelection = null;
     };
     const uploadStatus = (message = "") => {
       const status = select("[data-discussion-upload-status]");
@@ -336,6 +574,14 @@
       status.hidden = !message;
     };
     const retainedFileCount = (draft) => draft.attachments.filter((attachment) => !draft.removals.has(attachment.id)).length + draft.files.length;
+    const insertImageButton = (id, disabled) => {
+      const button = element("button", "board-button", "본문에 넣기");
+      button.type = "button";
+      button.disabled = disabled;
+      button.addEventListener("pointerdown", rememberSelection);
+      button.addEventListener("click", () => insertEditorContent({ id }));
+      return button;
+    };
     const renderEditorAttachments = () => {
       const draft = editorDraft;
       const fragment = document.createDocumentFragment();
@@ -356,12 +602,18 @@
         checkbox.setAttribute("aria-label", `${attachment.name} 삭제`);
         checkbox.addEventListener("change", () => {
           if (editorDraft !== draft || editorForm.dataset.busy === "true") return;
-          if (checkbox.checked) draft.removals.add(attachment.id);
+          if (checkbox.checked) {
+            draft.removals.add(attachment.id);
+          }
           else draft.removals.delete(attachment.id);
-          item.classList.toggle("is-removed", checkbox.checked);
+          markBodyImagesRemoved(attachment.id, checkbox.checked);
+          renderEditorAttachments();
         });
         label.append(checkbox, element("span", "", "삭제"));
-        item.append(info, label);
+        const actions = element("div", "discussion-attachment-actions");
+        if (src) actions.append(insertImageButton(attachment.id.toLowerCase(), inFlight || checkbox.checked));
+        actions.append(label);
+        item.append(info, actions);
         fragment.append(item);
       }
       for (const entry of draft.files) {
@@ -378,11 +630,15 @@
         remove.addEventListener("click", () => {
           if (editorDraft !== draft || editorForm.dataset.busy === "true" || entry.uncertain) return;
           draft.files = draft.files.filter((file) => file !== entry);
+          removeBodyImages(entry.requestId);
           releasePreview(entry);
           renderEditorAttachments();
           fileInput.focus();
         });
-        item.append(info, remove);
+        const actions = element("div", "discussion-attachment-actions");
+        if (entry.previewUrl) actions.append(insertImageButton(entry.requestId, inFlight));
+        actions.append(remove);
+        item.append(info, actions);
         fragment.append(item);
       }
       select("[data-discussion-editor-attachments]").replaceChildren(fragment);
@@ -416,8 +672,8 @@
       date.textContent = dateText(post.createdAt);
       date.dateTime = post.createdAt;
       select("[data-discussion-post-views]").textContent = number(post.views);
-      select("[data-discussion-post-body]").textContent = post.body;
-      renderPostAttachments(post);
+      const usedImages = renderPostBody(post);
+      renderPostAttachments(post, usedImages);
       renderComments();
     };
     const openEditor = (post) => {
@@ -438,6 +694,7 @@
       editorForm.elements.namedItem("password").autocomplete = post ? "current-password" : "new-password";
       for (const name of ["author", "title", "body"]) editorForm.elements.namedItem(name).value = post?.[name] || "";
       editorForm.elements.namedItem("category").value = post?.category === "case" ? "case" : "question";
+      renderEditorBody(post?.body || "");
       renderEditorAttachments();
       showView("editor");
     };
@@ -545,11 +802,13 @@
     searchForm.elements.namedItem("q").addEventListener("search", () => {
       if (!value(searchForm, "q") && searchForm.dataset.busy !== "true") navigate({ q: "", page: 1 });
     });
-    fileInput.addEventListener("change", () => {
-      const files = Array.from(fileInput.files || []);
-      fileInput.value = "";
+    const queueFiles = (files, inline = false) => {
       if (!editorDraft || editorForm.dataset.busy === "true" || !files.length) return;
       formError(editorForm);
+      if (inline && files.some((file) => !imageTypes.has(file.type.toLowerCase()))) {
+        formError(editorForm, "JPG, PNG, GIF, WebP 사진을 선택해 주세요.");
+        return;
+      }
       if (retainedFileCount(editorDraft) + files.length > maximumFiles) {
         formError(editorForm, "첨부파일은 최대 5개까지 등록할 수 있습니다.");
         return;
@@ -564,9 +823,41 @@
         if (imageTypes.has(file.type.toLowerCase())) {
           try { previewUrl = URL.createObjectURL(file); } catch { /* Preview is optional. */ }
         }
-        editorDraft.files.push({ file, previewUrl, requestId: uuid(), uncertain: false });
+        const entry = { file, previewUrl, requestId: uuid(), uncertain: false };
+        editorDraft.files.push(entry);
+        if (inline) insertEditorContent({ id: entry.requestId });
       }
       renderEditorAttachments();
+    };
+    fileInput.addEventListener("change", () => {
+      const files = Array.from(fileInput.files || []);
+      fileInput.value = "";
+      queueFiles(files);
+    });
+    photoInput.addEventListener("change", () => {
+      const files = Array.from(photoInput.files || []);
+      photoInput.value = "";
+      queueFiles(files, true);
+    });
+    const photoButton = select("[data-discussion-insert-photo]");
+    photoButton.addEventListener("pointerdown", rememberSelection);
+    photoButton.addEventListener("click", () => {
+      rememberSelection();
+      if (editorForm.dataset.busy !== "true") photoInput.click();
+    });
+    document.addEventListener("selectionchange", rememberSelection);
+    composer.addEventListener("input", () => { syncBody(); rememberSelection(); });
+    composer.addEventListener("paste", (event) => {
+      event.preventDefault();
+      if (editorForm.dataset.busy !== "true") insertEditorContent({ text: event.clipboardData?.getData("text/plain") || "" });
+    });
+    composer.addEventListener("dragover", (event) => event.preventDefault());
+    composer.addEventListener("drop", (event) => {
+      event.preventDefault();
+      if (editorForm.dataset.busy !== "true") insertEditorContent({ text: event.dataTransfer?.getData("text/plain") || "" });
+    });
+    composer.addEventListener("beforeinput", (event) => {
+      if (["insertFromPaste", "insertFromDrop", "insertFromYank"].includes(event.inputType)) event.preventDefault();
     });
     select("[data-discussion-write]").addEventListener("click", () => navigate({ mode: "write" }));
     select("[data-discussion-back]").addEventListener("click", () => navigate({}));
@@ -586,6 +877,7 @@
       event.preventDefault();
       if (!editorDraft || editorForm.dataset.busy === "true") return;
       formError(editorForm);
+      syncBody();
       const data = payload(editorForm, true);
       if (!validText(editorForm, data)) return;
       const draft = editorDraft;
@@ -638,6 +930,7 @@
           draft.attachments = draft.attachments.filter((attachment) => attachment.id !== id);
           draft.removals.delete(id);
           if (!isCurrent()) return;
+          removeBodyImages(id);
           renderEditorAttachments();
         }
         const uploads = draft.files.slice();
@@ -661,9 +954,29 @@
           draft.attachments = draft.attachments.filter((existing) => existing.id !== attachment.id);
           draft.attachments.push(attachment);
           draft.files = draft.files.filter((file) => file !== entry);
-          releasePreview(entry);
           if (!isCurrent()) return;
+          const bodyChanged = resolveBodyImage(entry.requestId, attachment);
+          releasePreview(entry);
           renderEditorAttachments();
+          if (bodyChanged) {
+            stage = "body";
+            data.body = syncBody();
+            uploadStatus("본문 사진 저장 중...");
+            const result = await api(`/${encodeURIComponent(draft.postId)}`, { method: "PATCH", body: data });
+            if (!result.post || result.post.id !== draft.postId) throw new ApiError("본문 저장 결과를 확인하지 못했습니다. 다시 시도해 주세요.");
+            draft.savedFields = JSON.stringify(data);
+            if (!isCurrent()) return;
+            stage = "attachments";
+          }
+        }
+        data.body = syncBody();
+        if (draft.savedFields !== JSON.stringify(data)) {
+          stage = "body";
+          uploadStatus("본문 저장 중...");
+          const result = await api(`/${encodeURIComponent(draft.postId)}`, { method: "PATCH", body: data });
+          if (!result.post || result.post.id !== draft.postId) throw new ApiError("본문 저장 결과를 확인하지 못했습니다. 다시 시도해 주세요.");
+          draft.savedFields = JSON.stringify(data);
+          if (!isCurrent()) return;
         }
         if (isCurrent()) {
           editorForm.reset();
@@ -673,7 +986,8 @@
       } catch (error) {
         if (isCurrent()) {
           if (draft.saved) {
-            const incomplete = stage === "attachments" ? "첨부파일을 처리하지 못했습니다." : "변경 사항을 저장하지 못했습니다.";
+            const incomplete = stage === "attachments" ? "첨부파일을 처리하지 못했습니다."
+              : stage === "body" ? "본문 사진 위치를 저장하지 못했습니다." : "변경 사항을 저장하지 못했습니다.";
             formError(editorForm, `글은 저장되었지만 ${incomplete} ${error.message}`);
             savedPostLink.href = hash({ q: route.q, page: route.page, id: draft.postId });
             savedPostLink.hidden = false;
