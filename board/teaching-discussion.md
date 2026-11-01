@@ -60,11 +60,51 @@ permalink: /board/teaching-discussion/
         </div>
         <div class="discussion-field">
           <label id="discussion-body-label">내용</label>
-          <div class="discussion-editor-toolbar">
-            <button class="board-button" type="button" data-discussion-insert-photo>사진 넣기</button>
-            <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-discussion-photo-input aria-label="본문에 넣을 사진 선택" hidden>
+          <div class="discussion-editor-shell">
+            <div class="discussion-editor-toolbars" data-discussion-rich-toolbar>
+              <div class="discussion-editor-toolbar discussion-editor-toolbar--insert" role="group" aria-label="본문 삽입">
+                <button class="discussion-editor-action" type="button" data-discussion-insert-photo title="이미지 삽입" aria-label="이미지 삽입">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3" width="15" height="14" rx="1"></rect><circle cx="7" cy="7.5" r="1.5"></circle><path d="m3 14 4-4 3 3 3-4 4 5"></path></svg><span>이미지</span>
+                </button>
+                <button class="discussion-editor-action" type="button" data-discussion-attach-file title="파일 첨부" aria-label="파일 첨부">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 10 5-5a3 3 0 0 1 4.2 4.2l-7.4 7.4a4 4 0 0 1-5.6-5.6l7.4-7.4M6.5 12.5l5.4-5.4a1 1 0 0 1 1.4 1.4L8 14"></path></svg><span>파일 첨부</span>
+                </button>
+                <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-discussion-photo-input aria-label="본문에 넣을 사진 선택" hidden>
+              </div>
+              <div class="discussion-editor-toolbar discussion-editor-toolbar--format" role="group" aria-label="본문 서식">
+                <div class="discussion-editor-tool-group" role="group" aria-label="글꼴과 크기">
+                  <select class="discussion-editor-font" data-editor-font title="글꼴" aria-label="글꼴"><option value="">기본 글꼴</option><option value="sans-serif">고딕</option><option value="serif">명조</option><option value="monospace">고정폭</option></select>
+                  <select class="discussion-editor-size" data-editor-size title="글자 크기" aria-label="글자 크기"><option value="12">12</option><option value="14">14</option><option value="16" selected>16</option><option value="18">18</option><option value="20">20</option><option value="24">24</option><option value="28">28</option><option value="32">32</option></select>
+                </div>
+                <div class="discussion-editor-tool-group" role="group" aria-label="글자 서식">
+                  <button class="discussion-editor-tool" type="button" data-editor-command="bold" title="굵게" aria-label="굵게" aria-pressed="false"><span class="discussion-editor-icon-bold" aria-hidden="true">B</span></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="italic" title="기울임" aria-label="기울임" aria-pressed="false"><span class="discussion-editor-icon-italic" aria-hidden="true">I</span></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="underline" title="밑줄" aria-label="밑줄" aria-pressed="false"><span class="discussion-editor-icon-underline" aria-hidden="true">U</span></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="strike" title="취소선" aria-label="취소선" aria-pressed="false"><span class="discussion-editor-icon-strike" aria-hidden="true">S</span></button>
+                  <input class="discussion-editor-color" type="color" value="#111111" data-editor-color title="글자색" aria-label="글자색">
+                </div>
+                <div class="discussion-editor-tool-group" role="group" aria-label="목록">
+                  <button class="discussion-editor-tool" type="button" data-editor-command="bulletList" title="글머리 기호 목록" aria-label="글머리 기호 목록" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5h9M8 10h9M8 15h9"></path><circle cx="3.5" cy="5" r=".8"></circle><circle cx="3.5" cy="10" r=".8"></circle><circle cx="3.5" cy="15" r=".8"></circle></svg></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="orderedList" title="번호 목록" aria-label="번호 목록" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5h9M8 10h9M8 15h9M2.5 3.5h1v4M2 7.5h3M2 11.5c0-2 3-2 3 0 0 1-3 2-3 4h3"></path></svg></button>
+                </div>
+                <div class="discussion-editor-tool-group" role="group" aria-label="문단 정렬">
+                  <button class="discussion-editor-tool" type="button" data-editor-command="alignLeft" title="왼쪽 정렬" aria-label="왼쪽 정렬" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h9"></path></svg></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="alignCenter" title="가운데 정렬" aria-label="가운데 정렬" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14M5.5 8h9M3 12h14M5.5 16h9"></path></svg></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="alignRight" title="오른쪽 정렬" aria-label="오른쪽 정렬" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M8 16h9"></path></svg></button>
+                </div>
+                <div class="discussion-editor-tool-group" role="group" aria-label="표와 링크">
+                  <select class="discussion-editor-table" data-editor-table title="표" aria-label="표"><option value="">표</option><option value="insert">표 삽입</option><option value="addRow">행 추가</option><option value="addColumn">열 추가</option><option value="deleteRow">행 삭제</option><option value="deleteColumn">열 삭제</option><option value="deleteTable">표 삭제</option></select>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="link" title="링크" aria-label="링크" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 6 2-2a4 4 0 0 1 6 6l-2 2M6 8l-2 2a4 4 0 0 0 6 6l2-2M7 13l6-6"></path></svg></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="clear" title="서식 지우기" aria-label="서식 지우기"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h12M9 3l-3 14M12 12l5 5M17 12l-5 5"></path></svg></button>
+                </div>
+                <div class="discussion-editor-tool-group" role="group" aria-label="실행 취소와 다시 실행">
+                  <button class="discussion-editor-tool" type="button" data-editor-command="undo" title="실행 취소" aria-label="실행 취소"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 3-4 4 4 4M3 7h9a5 5 0 0 1 0 10H9"></path></svg></button>
+                  <button class="discussion-editor-tool" type="button" data-editor-command="redo" title="다시 실행" aria-label="다시 실행"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m13 3 4 4-4 4M17 7H8a5 5 0 0 0 0 10h3"></path></svg></button>
+                </div>
+              </div>
+            </div>
+            <div id="discussion-body" class="discussion-rich-editor" data-discussion-composer></div>
           </div>
-          <div id="discussion-body" class="discussion-rich-editor" contenteditable="true" role="textbox" aria-labelledby="discussion-body-label" aria-multiline="true" aria-required="true" data-discussion-composer></div>
           <textarea name="body" data-discussion-body-value hidden></textarea>
         </div>
         <div class="discussion-field">
@@ -160,3 +200,5 @@ permalink: /board/teaching-discussion/
   </dialog>
   <noscript><p>게시판을 이용하려면 JavaScript를 켜 주세요.</p></noscript>
 </div>
+
+<script src="{{ '/assets/discussion-rich-editor.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
