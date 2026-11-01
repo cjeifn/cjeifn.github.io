@@ -47,6 +47,10 @@ permalink: /board/teaching-discussion/
       <fieldset>
         <legend class="discussion-sr-only">게시글 작성</legend>
         <div class="discussion-field">
+          <label for="discussion-category">글 유형</label>
+          <select id="discussion-category" name="category" required><option value="question">질문</option><option value="case">사례 공유</option></select>
+        </div>
+        <div class="discussion-field">
           <label for="discussion-author">작성자(닉네임)</label>
           <input id="discussion-author" name="author" required maxlength="30" autocomplete="nickname">
         </div>
@@ -59,13 +63,21 @@ permalink: /board/teaching-discussion/
           <textarea id="discussion-body" name="body" required maxlength="20000" rows="12"></textarea>
         </div>
         <div class="discussion-field">
-          <label for="discussion-password">비밀번호(8자 이상)</label>
-          <input id="discussion-password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="discussion-password-hint">
+          <label for="discussion-files">사진·파일 첨부</label>
+          <input id="discussion-files" name="attachments" type="file" multiple aria-describedby="discussion-files-hint" data-discussion-files>
+          <p class="discussion-hint" id="discussion-files-hint">최대 5개, 파일당 10MB</p>
+          <ul class="discussion-editor-attachments" data-discussion-editor-attachments></ul>
+        </div>
+        <div class="discussion-field">
+          <label for="discussion-password">비밀번호(4자 이상)</label>
+          <input id="discussion-password" name="password" type="password" required minlength="4" maxlength="128" autocomplete="new-password" aria-describedby="discussion-password-hint">
           <p class="discussion-hint" id="discussion-password-hint">비밀번호는 수정·삭제에 사용됩니다.</p>
         </div>
         <div class="discussion-trap" aria-hidden="true"><label for="discussion-website">Website</label><input id="discussion-website" name="website" tabindex="-1" autocomplete="off"></div>
         <p class="discussion-form-error" data-form-error role="alert" hidden></p>
+        <p class="discussion-upload-status" data-discussion-upload-status role="status" aria-live="polite" hidden></p>
         <div class="board-post__actions">
+          <a class="board-button" data-discussion-saved-post hidden>저장된 글 보기</a>
           <button class="board-button" type="button" data-discussion-editor-cancel>취소</button>
           <button class="board-button" type="submit" data-discussion-editor-submit>등록</button>
         </div>
@@ -83,6 +95,10 @@ permalink: /board/teaching-discussion/
       </div>
     </div>
     <div class="discussion-body" data-discussion-post-body></div>
+    <div class="board-attachments discussion-post-attachments" data-discussion-post-attachments hidden>
+      <h2>첨부파일</h2>
+      <ul data-discussion-post-attachment-list></ul>
+    </div>
     <div class="board-post__actions">
       <button class="board-button" type="button" data-discussion-edit>수정</button>
       <button class="board-button" type="button" data-discussion-delete-post>삭제</button>
@@ -102,8 +118,8 @@ permalink: /board/teaching-discussion/
               <input id="discussion-comment-author" name="author" required maxlength="30" autocomplete="nickname">
             </div>
             <div class="discussion-field">
-              <label for="discussion-comment-password">비밀번호(8자 이상)</label>
-              <input id="discussion-comment-password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="discussion-comment-password-hint">
+              <label for="discussion-comment-password">비밀번호(4자 이상)</label>
+              <input id="discussion-comment-password" name="password" type="password" required minlength="4" maxlength="128" autocomplete="new-password" aria-describedby="discussion-comment-password-hint">
             </div>
           </div>
           <p class="discussion-hint" id="discussion-comment-password-hint">비밀번호는 삭제에 사용됩니다.</p>
@@ -126,8 +142,8 @@ permalink: /board/teaching-discussion/
       <fieldset>
         <legend class="discussion-sr-only">삭제 확인</legend>
         <div class="discussion-field">
-          <label for="discussion-delete-password">비밀번호(8자 이상)</label>
-          <input id="discussion-delete-password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="current-password">
+          <label for="discussion-delete-password">비밀번호(4자 이상)</label>
+          <input id="discussion-delete-password" name="password" type="password" required minlength="4" maxlength="128" autocomplete="current-password">
         </div>
         <p class="discussion-form-error" data-form-error role="alert" hidden></p>
         <div class="board-post__actions">
