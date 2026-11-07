@@ -10,6 +10,12 @@ nav:
 
 ## 다가오는 행사
 
+예정된 행사가 없습니다.
+
+{% include section.html %}
+
+## 지난 행사
+
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 360px)); gap: 20px; width: 100%; margin-top: 16px; text-align: left;">
   <div style="display: flex; flex-direction: column; justify-content: space-between; background: #ffffff; border: 1px solid #d4d4d8; border-radius: 12px; padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: left;">
     <div>
@@ -26,9 +32,4 @@ nav:
     </div>
   </div>
 </div>
-
-{% include section.html %}
-
-## 지난 행사
-
 
