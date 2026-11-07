@@ -178,4 +178,14 @@ html:has(.event-gallery-dialog[open]) {
   .event-gallery {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .event-gallery-dialog-toolbar {
+    padding: 4px 8px;
+  }
+
+  .event-gallery-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
 }
