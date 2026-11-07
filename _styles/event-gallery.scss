@@ -180,12 +180,19 @@ html:has(.event-gallery-dialog[open]) {
   }
 
   .event-gallery-dialog-toolbar {
-    padding: 4px 8px;
+    min-height: 56px;
+    box-sizing: border-box;
   }
 
   .event-gallery-close {
-    width: 32px;
-    height: 32px;
-    font-size: 1.25rem;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .event-gallery-close::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
   }
 }
