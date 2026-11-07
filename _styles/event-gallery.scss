@@ -78,7 +78,7 @@
   outline-offset: 4px;
 }
 
-section:has(> .event-gallery) {
+main > section.background:has(> .event-gallery) {
   background: #ffffff;
 }
 
