@@ -10,8 +10,6 @@ nav:
 
 ## 다가오는 행사
 
-예정된 행사가 없습니다.
-
 {% include section.html %}
 
 ## 지난 행사
