@@ -2,7 +2,6 @@
 title: 행사
 nav:
   order: 6
-  tooltip: 행사
 ---
 
 # {% include icon.html icon="fa-solid fa-calendar-days" %}행사
