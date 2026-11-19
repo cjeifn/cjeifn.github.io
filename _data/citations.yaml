@@ -1,10 +1,24 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
 - id: doi:10.1093/molbev/msag265
-  title: pendingpublications
-  authors: []
-  publisher: ''
-  date: ''
+  title: 'MolEvolvR: A web-app for characterizing proteins using molecular evolution
+    and phylogeny'
+  authors:
+  - Faisal S Alquaddoomi
+  - Joseph T Burke
+  - Lo Sosinski
+  - Evan P Brenner
+  - David A Mayer
+  - Samuel Z Chen
+  - Jacob D Krol
+  - Vince P Rubinetti
+  - Ethan P Wolfe
+  - Shaddai Amolitos
+  - Kellen M Reason
+  - John B Johnston
+  - Janani Ravi
+  publisher: Molecular Biology and Evolution
+  date: '2026-11-18'
   link: https://doi.org/hcpr59
   orcid: 0000-0002-4655-3773
   plugin: orcid.py
